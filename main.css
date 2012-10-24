@@ -1,0 +1,9 @@
+/* Great place to test some looks:
+http://westciv.com/tools/gradients/index-moz.html
+*/
+
+.header {
+    width: 100%;
+    background: -moz-linear-gradient(31% 75% 90deg,#3737AB, #9771C9);
+    height: 45px;
+}
