@@ -4,8 +4,7 @@ http://westciv.com/tools/gradients/index-moz.html
 
 .header {
     width: 100%;
-    background: -moz-linear-gradient(50% 75% 90deg, #000099, #000066);
-    background: -webkit-linear-gradient(bottom, #000099, #000066);
+    background: #21242C;
     height: 45px;
 }
 
@@ -26,6 +25,9 @@ http://westciv.com/tools/gradients/index-moz.html
     height: 50px;
     margin: auto;
     margin-bottom: 10px;
+    -moz-box-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 8px 8px 5px #888;
 }
 
 .button_text {
