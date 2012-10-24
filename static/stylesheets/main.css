@@ -25,12 +25,25 @@ http://westciv.com/tools/gradients/index-moz.html
     height: 50px;
     margin: auto;
     margin-bottom: 10px;
-    -moz-box-shadow: 10px 10px 5px #888;
-    -webkit-box-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 8px 8px 5px #888;
     box-shadow: 8px 8px 5px #888;
+}
+
+.button :hover {
+    background-color: #999999;
+    border-radius: 15px;
 }
 
 .button_text {
     text-align:center;
     line-height:50px;
+}
+
+#title {
+    margin:auto;
+    color: #FFFFFF;
+    text-align:center;
+    height: 100%;
+    line-height: 45px;
+    font-family: 'Krona One', sans-serif;
 }

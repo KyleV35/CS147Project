@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Test Page</title>
 <?php
+    $title = "Create Account!";
     include 'meta.php' //Always include this file, has many necessary, but redundant files
 ?>
 </head>
@@ -10,7 +10,6 @@
     <?php
     include 'header.php';
     ?>
-    Create Account Page!
     
 </body>
 </html>

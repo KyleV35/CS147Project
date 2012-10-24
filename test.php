@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Test Page</title>
 <?php
+    $title = "Login!";
+    echo '<title>'.$title.'</title>';
     include 'meta.php' //Always include this file, has many necessary, but redundant files
 ?>
 </head>
