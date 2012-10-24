@@ -9,7 +9,9 @@
 <body>
     <?php
     include 'header.php';
-    echo "<h1> Hello! </h1>";
     ?>
+    <div id="logo"></div>
+    <div class="button"><p class="button_text">Login!</p></div>
+    <div class="button"><p class="button_text">Create Account!</p></div>
 </body>
 </html>
