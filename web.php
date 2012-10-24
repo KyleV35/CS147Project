@@ -16,6 +16,9 @@
     <div id="create_account_button" class="button"><p class="button_text">Create Account!</p></div>
     
     <script>
+        if (screen.width <= 700) {
+            window.location='mobile.php'
+        }
         $("#login_button").click(function() {
             window.location.href = 'login.php';
         });
