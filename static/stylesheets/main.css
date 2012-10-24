@@ -5,6 +5,7 @@ http://westciv.com/tools/gradients/index-moz.html
 .header {
     width: 100%;
     background: -moz-linear-gradient(50% 75% 90deg, #000099, #000066);
+    background: -webkit-linear-gradient(bottom, #000099, #000066);
     height: 45px;
 }
 
