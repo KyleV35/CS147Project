@@ -1,7 +1,7 @@
 <?php
     session_start();
     if ($_SESSION["username"] != null) {
-        header('Location: loginSucessful.php');
+        header('Location: home.php');
         exit();
     }
     $title = "Login!";

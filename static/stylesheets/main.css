@@ -55,3 +55,7 @@ http://westciv.com/tools/gradients/index-moz.html
 .red_text {
     color: red;
 }
+
+.popup {
+    padding: 15px;
+}
