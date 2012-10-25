@@ -1,18 +1,32 @@
 <?php
+    session_start();
+    
     include 'config.php';
     
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $encrypted_password = crypt($password, $salt);
     
-    $query = "Select * from Users where username = \"".$username."\" and password = \"".$password."\";";
+    if (strlen($username) == 0) {
+        $_SESSION["flash"] = "Username and/or password is incorrect.";
+        header( "Location: mobile.php");
+        exit();
+    }
+    
+    $query = "Select * from User where username = \"".$username."\" and password = \"".$encrypted_password."\";";
     
     
-    $rows = mysql_query($query);
+    $result = mysql_query($query); // Returns FALSE on error
     
-    if ($rows != FALSE) {
-        header('Location: loginSucessful.php');
+    if (!$result or mysql_num_rows($result) == 0) {
+        //Login unsuccessful
+        $_SESSION["flash"] = "Username and/or password is incorrect.";
+        header('Location: mobile.php');
+        exit();
     } else {
-        echo '<p>'.$username.'</p>';
-        echo '<p>'.$password.'</p>';
+        //Login successful
+        $_SESSION["username"] = $username;
+        header('Location: home.php');
+        exit();
     }
 ?>
