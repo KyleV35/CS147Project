@@ -10,13 +10,9 @@
 <body>
 <div data-role="page">
 
-	<div data-role="header">
-		<h1>
-		<?php
-		echo $title;
-		?>
-		</h1>
-	</div><!-- /header -->
+	<?php
+	    include 'header.php'
+	?>
 
 	<div data-role="content">	
 		<div id="logo"></div>
