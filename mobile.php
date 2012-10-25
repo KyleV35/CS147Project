@@ -4,7 +4,7 @@
         header('Location: home.php');
         exit();
     }
-    $title = "Login!";
+    $title = "News Now";
 ?>
 
 <!DOCTYPE html>

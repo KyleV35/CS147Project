@@ -2,7 +2,7 @@
     include 'config.php';
     session_start();
     $title = "Your feeds!";
-    $extra_header = "<a href=\"logout.php\" class=\"ui-btn-right\">Logout</a>";
+    $extra_header = "<a href=\"logout.php\" class=\"ui-btn-left\">Logout</a>";
     $username = $_SESSION["username"];
 	if ($username == null) {
 		$_SESSION["flash"] = "You must be logged in to use this page!";
@@ -11,8 +11,6 @@
 	}
 	// Fetch userID
 	$query = "Select userID from User where username = \"".$username."\";";
-	echo "Query: ".$query;
-	echo "Username: ".$username;
     $result = mysql_query($query);
     if (!$result or mysql_num_rows($result) <= 0) {
         $_SESSION["flash"] = "The stream could not be created.  We'll work to fix this!";

@@ -17,8 +17,6 @@
     }
     
     $username = $_SESSION["username"];
-    //echo "HELLO ".$username;
-    // Fetch user ID
     $query = "Select userID from User where username = \"".$username."\";";
     $result = mysql_query($query);
     if (!$result or mysql_num_rows($result) <= 0) {
@@ -30,11 +28,9 @@
     $userID = $userID_row[0];
     
     $insert_stream_query = "INSERT INTO Stream VALUES (NULL,".$userID.",\"".$stream_name."\");";
-    //echo $insert_stream_query;
     
     $result = mysql_query($insert_stream_query);
     
-    //echo $result;
     
     if ($result) {
         header('Location: home.php');
