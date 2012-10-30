@@ -69,9 +69,9 @@ http://westciv.com/tools/gradients/index-moz.html
 }
 
 .allow_overflow {
-    /*overflow: visible !important;*/
+    white-space: normal !important;
 }
 
 .article_stub_div {
-    width: 70%;
+    width: 85%;
 }
