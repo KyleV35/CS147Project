@@ -70,8 +70,20 @@ http://westciv.com/tools/gradients/index-moz.html
 
 .allow_overflow {
     white-space: normal !important;
+    overflow: visible !important;
 }
 
 .article_stub_div {
-    width: 85%;
+    width: 90%;
+}
+
+.article_site {
+    padding-bottom: 3px;
+    padding-top:3px;
+    font-size:10px;
+    color: #009933;
+}
+
+.article_title {
+    color: #1122CC;
 }

@@ -1,6 +1,7 @@
 <?php
 
 include_once "../models/article.php";
+include_once "../models/site.php";
 
 class RSS_Feed {
     
@@ -9,6 +10,7 @@ class RSS_Feed {
     private $filter;
     private $url;
     private $article_list;
+    private $siteName;
     
     public function __construct($rssID,$siteID,$filter,$url) {
         $this->rssID = $rssID;
@@ -24,7 +26,8 @@ class RSS_Feed {
         
         foreach ($rss_feed->channel->item as $article) {
             $filtered_description = strip_tags($article->description);
-            $article = new Article($article->title, $article->link, $filtered_description);
+            $site_name = $this->get_site_name();
+            $article = new Article($article->title, $article->link, $filtered_description, $site_name);
             array_push($article_title_array, $article);
         }
         return $article_title_array;  
@@ -51,6 +54,14 @@ class RSS_Feed {
             $this->article_list = $this->read_rss();
         }
         return $this->article_list;
+    }
+    
+    public function get_site_name() {
+        if ($this->siteName == null) {
+            $site = get_site_for_siteID($this->siteID);
+            $this->siteName = $site->get_site_name();
+        }
+        return $this->siteName;
     }
     
     

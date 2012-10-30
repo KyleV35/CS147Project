@@ -36,14 +36,18 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
         echo "<ul data-role=\"listview\" data-filter=\"true\">";
         foreach ($rss_feed_array as $rss_feed) {
             $article_array = $rss_feed->get_article_list();
+            $rss_filter = $rss_feed->get_filter();
             foreach ($article_array as $article) {
                 $article_title = $article->get_title();
                 $article_link = $article->get_link();
+                $article_site_name = $article->get_site_name();
                 $article_description = $article->get_description();
                 echo "<li>
-                    <a href=\"$article_link\ data-role=\"button\">
+                    <a href=\"$article_link\">
                         <div class=\"article_stub_div\">
-                        <h3 class=\"allow_overflow\">$article_title</h3>
+                        <h3 class=\"allow_overflow article_title\">$article_title</h3>
+                        <p class=\"allow_overflow article_site\">$article_site_name - 
+                            $rss_filter</p>
                         <p class=\"allow_overflow\">$article_description</p>
                         </div>
                     </a>
