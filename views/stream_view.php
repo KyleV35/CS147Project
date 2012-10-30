@@ -9,7 +9,7 @@ $stream_name = $stream->get_stream_name();
 $title = $stream_name;
 $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams List</a>
 <a href=\"../views/manage_stream.php?streamID=$streamID\" class=\"ui-btn-right\" 
-    data-icon=\"gear\">Manage Stream</a>";
+    data-icon=\"gear\">Manage</a>";
     
 ?>
 
@@ -39,7 +39,9 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
             foreach ($article_array as $article) {
                 $article_title = $article->get_title();
                 $article_link = $article->get_link();
-                echo "<li><a href=\"$article_link\">$article_title</a></li>";
+                $article_description = $article->get_description();
+                echo "<li><a href=\"$article_link\ data-role=\"button\"><h3>$article_title</h3><p class=\"description_text\">
+                    $article_description</p></a></li>";
             }
         }
                 

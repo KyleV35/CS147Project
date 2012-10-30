@@ -139,7 +139,7 @@
     }
     
     function add_feed_to_stream($rssID,$streamID) {
-        $insert_query = "INSERT INTO Has_Feed VALUES ($streamID,$rssID);";
+        $insert_query = "INSERT INTO Has_Feed VALUES ($streamID,$rssID,'true');";
         $result = mysql_query($insert_query);
         if (!$result) {
             return FALSE;
@@ -150,7 +150,7 @@
     
     function get_rss_feeds_for_stream($streamID) {
         $rss_feeds_query = "SELECT * from RSS_Feeds where rssID in
-            (select rssID from Has_Feed where streamID=$streamID);";
+            (select rssID from Has_Feed where streamID=$streamID and active='true');";
         $result = mysql_query($rss_feeds_query);
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";

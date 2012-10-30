@@ -64,3 +64,8 @@ http://westciv.com/tools/gradients/index-moz.html
 .stream_container_list {
     
 }
+
+.description_text {
+    padding-left:15px;
+    margin: 0px !important;
+}
