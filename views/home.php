@@ -34,7 +34,7 @@
         foreach ($stream_array as $stream) {
             $stream_name = $stream->get_stream_name();
             $streamID = $stream->get_streamID();
-            echo "<li><a href=\"../views/manage_stream.php?streamID=$streamID\">".$stream_name."</a></li>";
+            echo "<li><a href=\"../views/stream_view.php?streamID=$streamID\">".$stream_name."</a></li>";
         }
         echo "<a id=\"create_feed_button\" href=\"#create_stream_popup\" data-rel=\"popup\" data-role=\"button\">Create New Feed!</a>";
         echo "</ul>";
@@ -45,12 +45,12 @@
         <!-- Create Stream Popup -->
         <div data-role="popup" id="create_stream_popup" class="popup">
             <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-	        <form action="../controllers/createStream.php" method="post">
+	    <form action="../controllers/createStream.php" method="post">
                 <input type="text" name="streamName" value="" placeholder="Stream Name" />
                 <input type="submit" value="Create Stream!"/>
-		    </form>
-	    </div>
-	    <!-- /Create Stream Popup -->
+            </form>
+	</div>
+	<!-- /Create Stream Popup -->
         
 	</div><!-- /content -->
 	
@@ -59,7 +59,13 @@
 
 
 <script>
+jQuery('div').live('pagehide', function(event, ui){
+  var page = jQuery(event.target);
 
+  if(page.attr('data-cache') == 'never'){
+    page.remove();
+  };
+});
 </script>
 
 </body>

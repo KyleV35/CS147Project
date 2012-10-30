@@ -10,15 +10,12 @@
         exit();
     }
     
-    $userID = require_login("mobile.php");
+    $userID = require_login("../views/mobile.php");
     
-    $insert_stream_query = "INSERT INTO Stream VALUES (NULL,".$userID.",\"".$stream_name."\");";
+    $streamID = create_stream($userID, $stream_name);
     
-    $result = mysql_query($insert_stream_query);
-    
-    
-    if ($result) {
-        header('Location: ../views/home.php');
+    if ($streamID) {
+        header("Location: ../views/manage_stream.php?streamID=$streamID");
         exit();
     } else {
         $_SESSION["flash"] = "The stream could not be created.  We'll work to fix this!";

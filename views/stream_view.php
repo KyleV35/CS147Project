@@ -7,7 +7,9 @@ $streamID = $_GET["streamID"];
 $stream = get_stream_for_streamID($streamID);
 $stream_name = $stream->get_stream_name();
 $title = $stream_name;
-$extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams List</a>";
+$extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams List</a>
+<a href=\"../views/manage_stream.php?streamID=$streamID\" class=\"ui-btn-right\" 
+    data-icon=\"gear\">Manage Stream</a>";
     
 ?>
 

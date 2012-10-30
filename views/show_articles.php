@@ -3,11 +3,9 @@
 include_once '../utils/config.php';
 session_start();
 $userID = require_login("mobile.php");
-$streamID = $_GET["streamID"];
-$stream = get_stream_for_streamID($streamID);
-$stream_name = $stream->get_stream_name();
-$title = "Manage ".$stream_name;
-$extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\"ui-btn-left\">$stream_name</a>";
+$siteID = $_GET["siteID"];
+$rss_feed_array = get_rss_feeds_for_siteID($siteID);
+$title = "RSS URLS";
     
 ?>
 
@@ -30,11 +28,17 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
             unset($_SESSION["flash"]);
         }
         
-        echo "<div class=\"stream_list_container\">";
-        echo "<ul data-role=\"listview\">";
-        echo "<a id=\"add_source_button\" href=\"../views/add_source_view.php?streamID=$streamID\" data-role=\"button\">Add new source!</a>";
+        echo "<ul data-role=\"listview\" data-filter=\"true\">";
+        foreach ($rss_feed_array as $rss_feed) {
+            $article_array = $rss_feed->get_article_list();
+            foreach ($article_array as $article) {
+                $article_title = $article->get_title();
+                $article_link = $article->get_link();
+                echo "<li><a href=\"$article_link\">$article_title</a></li>";
+            }
+        }
+                
         echo "</ul>";
-        echo "</div>";
         
         ?>
         

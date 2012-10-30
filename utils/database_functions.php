@@ -2,6 +2,7 @@
 
     include_once '../models/stream.php';
     include_once '../models/site.php';
+    include_once '../models/rss_feed.php';
 
     $link = mysql_connect('mysql-user-master.stanford.edu', 'ccs147kvermeer', 'booboo35');
     mysql_select_db('c_cs147_kvermeer');
@@ -96,5 +97,32 @@
             array_push($site_array,$site);
         }
         return $site_array;
+    }
+    
+    function create_stream($userID, $stream_name) {
+        $insert_stream_query = "INSERT INTO Stream VALUES (NULL,".$userID.",\"".$stream_name."\");";
+        $result = mysql_query($insert_stream_query);
+        
+        if (!$result) {
+            return FALSE;
+        } else {
+            return mysql_insert_id();
+        }
+    }
+    
+    function get_rss_feeds_for_siteID($siteID) {
+        $rss_query = "Select * from RSS_Feeds where siteID = ".$siteID.";";
+        $result = mysql_query($rss_query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
+        $rss_array = array();
+        while ($row = mysql_fetch_assoc($result)) {
+            $rss_feed = new RSS_Feed($row["rssID"], $row["siteID"], 
+                    $row["filter"], $row["url"]);
+            array_push($rss_array, $rss_feed);
+        }
+        return $rss_array;
     }
 ?>

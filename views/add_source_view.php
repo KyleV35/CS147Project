@@ -34,7 +34,8 @@ $extra_header = "<a href=\"../views/manage_stream.php?streamID=$streamID\" class
         $site_array = get_all_sites();
         foreach ($site_array as $site) {
             $site_name = $site->get_site_name();
-            echo "<li><a hef=\"#\">$site_name</a></li>";
+            $siteID = $site->get_siteID();
+            echo "<li><a href=\"../views/show_articles.php?siteID=$siteID\">$site_name</a></li>";
         }
                 
         echo "</ul>";
