@@ -9,10 +9,11 @@ http://westciv.com/tools/gradients/index-moz.html
 }
 
 #logo {
-    background-image: url("../media/NewsSite.png"); /* Quick hack, need to look into this */
+    background-image: url("../media/Logo.png"); /* Quick hack, need to look into this */
     background-position: center;
-    width: 171px;
-    height: 149px;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 88px;
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
