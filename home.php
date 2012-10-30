@@ -4,12 +4,13 @@
     session_start();
     $title = "Your feeds!";
     $extra_header = "<a href=\"logout.php\" class=\"ui-btn-left\">Logout</a>";
-    require_login("mobile.php");
+    $username = require_login("mobile.php");
     // Fetch userID
     $query = "Select userID from User where username = \"".$username."\";";
     $result = mysql_query($query);
     if (!$result or mysql_num_rows($result) <= 0) {
-        $_SESSION["flash"] = "The stream could not be created.  We'll work to fix this!";
+        echo "Failure";
+        $_SESSION["flash"] = "User ID could not be fetched!";
         header('Location: home.php');
         exit();
     }
