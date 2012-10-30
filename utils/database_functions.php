@@ -58,7 +58,7 @@
         
         $stream_query = "Select * from Stream where userID = ".$userID.";";
         $result = mysql_query($stream_query);
-        if (!result) {
+        if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
         }
@@ -68,5 +68,17 @@
             array_push($stream_array, $stream);
         }
         return $stream_array;
+    }
+    
+    function get_stream_for_streamID($streamID) {
+        $stream_query = "Select * from Stream where streamID = ".$streamID.";";
+        $result = mysql_query($stream_query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
+        $row = mysql_fetch_assoc($result);
+        $stream = new Stream($row["streamName"], $row["userID"], $row["streamID"]);
+        return $stream;
     }
 ?>
