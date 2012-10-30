@@ -10,7 +10,7 @@
         $username = $_SESSION["userID"];
 	if ($username == null) {
             $_SESSION["flash"] = "You must be logged in to use this page!";
-            header("Location: '$failure_page'");
+            header("Location: $failure_page");
             exit();
 	} else{
             return $username;

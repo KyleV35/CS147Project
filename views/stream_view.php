@@ -40,8 +40,12 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                 $article_title = $article->get_title();
                 $article_link = $article->get_link();
                 $article_description = $article->get_description();
-                echo "<li><a href=\"$article_link\ data-role=\"button\"><h3>$article_title</h3><p class=\"description_text\">
-                    $article_description</p></a></li>";
+                echo "<li>
+                    <a href=\"$article_link\ data-role=\"button\">
+                        <h3>$article_title</h3>
+                        <p class=\"description_text\">$article_description</p>
+                    </a>
+                    </li>";
             }
         }
                 

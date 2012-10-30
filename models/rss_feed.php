@@ -23,7 +23,8 @@ class RSS_Feed {
         $article_title_array = array();
         
         foreach ($rss_feed->channel->item as $article) {
-            $article = new Article($article->title, $article->link, $article->description);
+            $filtered_description = strip_tags($article->description);
+            $article = new Article($article->title, $article->link, $filtered_description);
             array_push($article_title_array, $article);
         }
         return $article_title_array;  
