@@ -67,3 +67,7 @@ http://westciv.com/tools/gradients/index-moz.html
 
 .description_text {
 }
+
+.allow_overflow {
+    overflow: visible !important;
+}
