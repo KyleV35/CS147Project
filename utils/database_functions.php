@@ -1,6 +1,7 @@
 <?php
 
     include_once '../models/stream.php';
+    include_once '../models/site.php';
 
     $link = mysql_connect('mysql-user-master.stanford.edu', 'ccs147kvermeer', 'booboo35');
     mysql_select_db('c_cs147_kvermeer');
@@ -80,5 +81,20 @@
         $row = mysql_fetch_assoc($result);
         $stream = new Stream($row["streamName"], $row["userID"], $row["streamID"]);
         return $stream;
+    }
+    
+    function get_all_sites() {
+        $site_query = "Select * from Sites;";
+        $result = mysql_query($site_query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
+        $site_array = array();
+        while ($row = mysql_fetch_assoc($result)) {
+            $site = new Site($row["siteID"], $row["siteName"]);
+            array_push($site_array,$site);
+        }
+        return $site_array;
     }
 ?>
