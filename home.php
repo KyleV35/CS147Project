@@ -1,16 +1,12 @@
 <?php
     include 'config.php';
+    include 'utils.php';
     session_start();
     $title = "Your feeds!";
     $extra_header = "<a href=\"logout.php\" class=\"ui-btn-left\">Logout</a>";
-    $username = $_SESSION["username"];
-	if ($username == null) {
-		$_SESSION["flash"] = "You must be logged in to use this page!";
-        header('Location: mobile.php');
-        exit();
-	}
-	// Fetch userID
-	$query = "Select userID from User where username = \"".$username."\";";
+    require_login("mobile.php");
+    // Fetch userID
+    $query = "Select userID from User where username = \"".$username."\";";
     $result = mysql_query($query);
     if (!$result or mysql_num_rows($result) <= 0) {
         $_SESSION["flash"] = "The stream could not be created.  We'll work to fix this!";
