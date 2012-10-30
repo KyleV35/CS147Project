@@ -32,6 +32,18 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
             unset($_SESSION["flash"]);
         }
         
+        $rss_feed_array = get_rss_feeds_for_stream($streamID);
+        echo "<ul data-role=\"listview\" data-filter=\"true\">";
+        foreach ($rss_feed_array as $rss_feed) {
+            $article_array = $rss_feed->get_article_list();
+            foreach ($article_array as $article) {
+                $article_title = $article->get_title();
+                $article_link = $article->get_link();
+                echo "<li><a href=\"$article_link\">$article_title</a></li>";
+            }
+        }
+                
+        echo "</ul>";
         ?>
         
     </div><!-- /content -->

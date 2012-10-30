@@ -3,9 +3,14 @@
 include_once '../utils/config.php';
 session_start();
 $userID = require_login("mobile.php");
+$streamID = $_GET["streamID"];
 $siteID = $_GET["siteID"];
-$rss_feed_array = get_rss_feeds_for_siteID($siteID);
-$title = "RSS URLS";
+$stream = get_stream_for_streamID($streamID);
+$stream_name = $stream->get_stream_name();
+$site = get_site_for_siteID($siteID);
+$site_name = $site->get_site_name();
+$title = "Select Feed for: ".$site_name;
+$extra_header = "<a href=\"../views/add_source_view.php?streamID=$streamID\" class=\"ui-btn-left\">Cancel</a>";
     
 ?>
 
@@ -28,15 +33,12 @@ $title = "RSS URLS";
             unset($_SESSION["flash"]);
         }
         
-        echo "<ul data-role=\"listview\" data-filter=\"true\">";
+        echo "<ul data-role=\"listview\" data-filter=\"true\" data-autodividers=\"true\">";
+        $rss_feed_array = get_rss_feeds_for_siteID($siteID);
         foreach ($rss_feed_array as $rss_feed) {
-            echo "<li>A</li>";
-            $article_array = $rss_feed->get_article_list();
-            foreach ($article_array as $article) {
-                $article_title = $article->get_title();
-                $article_link = $article->get_link();
-                echo "<li><a href=\"$article_link\">$article_title</a></li>";
-            }
+            $rss_feed_filter = $rss_feed->get_filter();
+            $rssID = $rss_feed->get_rssID();
+            echo "<li><a href=\"../controllers/add_feed_to_stream.php?streamID=$streamID&rssID=$rssID\">$rss_feed_filter</a></li>";
         }
                 
         echo "</ul>";

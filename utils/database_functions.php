@@ -99,6 +99,18 @@
         return $site_array;
     }
     
+    function get_site_for_siteID($siteID) {
+        $site_query = "Select * from Sites where siteID=$siteID;";
+        $result = mysql_query($site_query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
+        $row = mysql_fetch_assoc($result);
+        $site = new Site($row["siteID"], $row["siteName"]);
+        return $site;
+    }
+    
     function create_stream($userID, $stream_name) {
         $insert_stream_query = "INSERT INTO Stream VALUES (NULL,".$userID.",\"".$stream_name."\");";
         $result = mysql_query($insert_stream_query);
@@ -113,6 +125,33 @@
     function get_rss_feeds_for_siteID($siteID) {
         $rss_query = "Select * from RSS_Feeds where siteID = ".$siteID.";";
         $result = mysql_query($rss_query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
+        $rss_array = array();
+        while ($row = mysql_fetch_assoc($result)) {
+            $rss_feed = new RSS_Feed($row["rssID"], $row["siteID"], 
+                    $row["filter"], $row["url"]);
+            array_push($rss_array, $rss_feed);
+        }
+        return $rss_array;
+    }
+    
+    function add_feed_to_stream($rssID,$streamID) {
+        $insert_query = "INSERT INTO Has_Feed VALUES ($streamID,$rssID);";
+        $result = mysql_query($insert_query);
+        if (!$result) {
+            return FALSE;
+        } else {
+            return TRUE;
+        }
+    }
+    
+    function get_rss_feeds_for_stream($streamID) {
+        $rss_feeds_query = "SELECT * from RSS_Feeds where rssID in
+            (select rssID from Has_Feed where streamID=$streamID);";
+        $result = mysql_query($rss_feeds_query);
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");

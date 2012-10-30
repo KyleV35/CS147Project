@@ -15,7 +15,6 @@ class RSS_Feed {
         $this->siteID = $siteID;
         $this->filter = $filter;
         $this->url = $url;
-        $this->article_list = $this->read_rss();
     }
     
     private function read_rss() {
@@ -47,6 +46,9 @@ class RSS_Feed {
     }
     
     public function get_article_list() {
+        if ($this->article_list == null) {
+            $this->article_list = $this->read_rss();
+        }
         return $this->article_list;
     }
     
