@@ -89,13 +89,16 @@ http://westciv.com/tools/gradients/index-moz.html
 }
 
 .feed_title_for_management {
-    min-width: 90%;
-    display: inline-table;
+    float:left;
+    max-width: 60%;
     vertical-align: middle;
-    font-size:20px;
-    margin-top: -1em;
+    padding-top:.9em;
 }
 
 .feed_activation_slider {
-    display:inline-table;
+    float:right;
+}
+
+.placeholder {
+    clear:both;
 }

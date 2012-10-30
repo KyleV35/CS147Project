@@ -85,7 +85,7 @@
     }
     
     function get_all_sites() {
-        $site_query = "Select * from Sites;";
+        $site_query = "Select * from Sites ORDER BY siteName;";
         $result = mysql_query($site_query);
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";

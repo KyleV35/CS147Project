@@ -44,6 +44,7 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
                     <option value=\"on\">On</option>
                 </select> 
                 </div>
+                <div class=\"placeholder\"></div>
                 </li>";
         }
         echo "<a id=\"add_source_button\" href=\"../views/add_source_view.php?streamID=$streamID\" data-role=\"button\">Add new source!</a>";
