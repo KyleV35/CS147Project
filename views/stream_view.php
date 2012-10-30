@@ -42,8 +42,10 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                 $article_description = $article->get_description();
                 echo "<li>
                     <a href=\"$article_link\ data-role=\"button\">
+                        <div class=\"article_stub_div\">
                         <h3 class=\"allow_overflow\">$article_title</h3>
                         <p class=\"allow_overflow\">$article_description</p>
+                        </div>
                     </a>
                     </li>";
             }
