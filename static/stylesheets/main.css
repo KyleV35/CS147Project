@@ -87,3 +87,15 @@ http://westciv.com/tools/gradients/index-moz.html
 .article_title {
     color: #1122CC;
 }
+
+.feed_title_for_management {
+    min-width: 90%;
+    display: inline-table;
+    vertical-align: middle;
+    font-size:20px;
+    margin-top: -1em;
+}
+
+.feed_activation_slider {
+    display:inline-table;
+}

@@ -32,6 +32,20 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
         
         echo "<div class=\"stream_list_container\">";
         echo "<ul data-role=\"listview\">";
+        $rss_feed_array = get_rss_feeds_for_stream($streamID);
+        foreach ($rss_feed_array as $rss_feed) {
+            $rss_feed_site_name= $rss_feed->get_site_name();
+            $rss_feed_filter= $rss_feed->get_filter();
+            echo "<li>
+                <div class=\"feed_title_for_management\">$rss_feed_site_name - $rss_feed_filter</div>
+                <div class=\"feed_activation_slider\">
+                <select name=\"flip-1\" id=\"flip-1\" data-role=\"slider\">
+                    <option value=\"off\">Off</option>
+                    <option value=\"on\">On</option>
+                </select> 
+                </div>
+                </li>";
+        }
         echo "<a id=\"add_source_button\" href=\"../views/add_source_view.php?streamID=$streamID\" data-role=\"button\">Add new source!</a>";
         echo "</ul>";
         echo "</div>";
