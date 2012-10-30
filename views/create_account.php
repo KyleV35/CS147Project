@@ -8,13 +8,13 @@
 <html>
 <head>
 <?php
-    include 'meta.php'; //Always include this file, has many necessary, but redundant files
+    include '../utils/meta.php'; //Always include this file, has many necessary, but redundant files
 ?>
 </head>
 <body>
 <div data-role="page">
     <?php
-    include 'header.php';
+    include '../views/header.php';
     ?>
     
     <div data-role="content">	
@@ -26,7 +26,7 @@
 		        unset($_SESSION['flash']);
 		    }
 		?>
-		<form action="account_creation.php" method="post">
+		<form action="../controllers/account_creation.php" method="post">
             <input type="text" name="username" value="" placeholder="Username" />
             <input type="password" name="password" value="" placeholder="Password" />
             <input type="submit" value="Create Account!"/>

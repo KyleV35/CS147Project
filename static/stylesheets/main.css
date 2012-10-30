@@ -9,7 +9,7 @@ http://westciv.com/tools/gradients/index-moz.html
 }
 
 #logo {
-    background-image: url("../../static/media/NewsSite.png"); /* Quick hack, need to look into this */
+    background-image: url("../media/NewsSite.png"); /* Quick hack, need to look into this */
     background-position: center;
     width: 171px;
     height: 149px;

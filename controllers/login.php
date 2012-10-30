@@ -1,12 +1,10 @@
 <?php
     session_start();
     
-    include 'utils/config.php';
-    include 'utils/utils.php';
-    include 'utils/database_functions.php';
+    include_once '../utils/config.php';
     
     $username = $_POST["username"];
     $password = $_POST["password"];
     
-    login($username, $password, 'mobile.php', 'home.php');
+    login($username, $password, '../views/mobile.php', '../views/home.php');
 ?>

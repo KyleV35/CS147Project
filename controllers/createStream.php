@@ -1,13 +1,12 @@
 <?php
     session_start();
     
-    include 'utils/config.php';
-    include 'utils/utils.php';
+    include_once '../utils/config.php';
     
     $stream_name = $_POST['streamName'];
     if (strlen($stream_name) <= 0 ) {
          $_SESSION["flash"] = "The stream name must be at least 1 character!";
-        header('Location: wrong.php');
+        header('Location: ../views/wrong.php');
         exit();
     }
     
@@ -19,11 +18,11 @@
     
     
     if ($result) {
-        header('Location: home.php');
+        header('Location: ../views/home.php');
         exit();
     } else {
         $_SESSION["flash"] = "The stream could not be created.  We'll work to fix this!";
-        header('Location: home.php');
+        header('Location: ../views/home.php');
         exit();
     }
 

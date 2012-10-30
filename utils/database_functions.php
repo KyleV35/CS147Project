@@ -1,5 +1,7 @@
 <?php
 
+    include_once '../models/stream.php';
+
     $link = mysql_connect('mysql-user-master.stanford.edu', 'ccs147kvermeer', 'booboo35');
     mysql_select_db('c_cs147_kvermeer');
     
@@ -44,7 +46,7 @@
         $result = mysql_query($query);
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
-            header( "Location: create_account.php");
+            header( "Location: ../views/create_account.php");
         } else if (mysql_num_rows($result) >= 1) {
             return TRUE;
         } else {
@@ -53,13 +55,12 @@
     }
     
     function get_streams_for_userID($userID) {
-        include 'models/stream.php';
         
         $stream_query = "Select * from Stream where userID = ".$userID.";";
         $result = mysql_query($stream_query);
         if (!result) {
             $_SESSION['flash'] = "There was an issue on our side!";
-            header( "Location: error.php");
+            header( "Location: ../views/error.php");
         }
         $stream_array = array();
         while ($row = mysql_fetch_assoc($result)) {
