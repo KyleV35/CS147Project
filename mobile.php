@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if ($_SESSION["username"] != null) {
+    if ($_SESSION["userID"] != null) {
         header('Location: home.php');
         exit();
     }

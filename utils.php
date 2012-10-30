@@ -7,7 +7,7 @@
      * Returns: username of logged in user.
      */
     function require_login($failure_page) {
-        $username = $_SESSION["username"];
+        $username = $_SESSION["userID"];
 	if ($username == null) {
             $_SESSION["flash"] = "You must be logged in to use this page!";
             header("Location: '$failure_page'");

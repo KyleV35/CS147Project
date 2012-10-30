@@ -30,7 +30,8 @@
         $encrypted_password = crypt($password, $salt);
         $insert_query = "INSERT INTO User VALUES (NULL,\"".$username."\",\"".$encrypted_password."\");";
         if (mysql_query($insert_query)) {
-            $_SESSION["username"] = $username;
+            $userID = mysql_insert_id();
+            $_SESSION["userID"] = $userID;
             header ("Location: home.php");
             exit();
         } else {

@@ -4,18 +4,8 @@
     session_start();
     $title = "Your feeds!";
     $extra_header = "<a href=\"logout.php\" class=\"ui-btn-left\">Logout</a>";
-    $username = require_login("mobile.php");
-    // Fetch userID
-    $query = "Select userID from User where username = \"".$username."\";";
-    $result = mysql_query($query);
-    if (!$result or mysql_num_rows($result) <= 0) {
-        echo "Failure";
-        $_SESSION["flash"] = "User ID could not be fetched!";
-        header('Location: home.php');
-        exit();
-    }
-    $userID_row = mysql_fetch_row($result);
-    $userID = $userID_row[0];
+    $userID = require_login("mobile.php");
+    
         
 ?>
 
@@ -45,12 +35,14 @@
 		
         $stream_query = "Select * from Stream where userID = ".$userID.";";
         $result = mysql_query($stream_query);
+        echo "<div class=\"stream_list_container\">";
         echo "<ul data-role=\"listview\">";
         while ($row = mysql_fetch_assoc($result)) {
             echo "<li><a href=\"#\">".$row['streamName']."</a></li>";
         }
         echo "<a id=\"create_feed_button\" href=\"#create_stream_popup\" data-rel=\"popup\" data-role=\"button\">Create New Feed!</a>";
         echo "</ul>";
+        echo "</div>";
 	?>
 	    
         

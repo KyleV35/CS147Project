@@ -25,7 +25,8 @@
         exit();
     } else {
         //Login successful
-        $_SESSION["username"] = $username;
+        $result_array = mysql_fetch_assoc($result);
+        $_SESSION["userID"] = $result_array["userID"];
         header('Location: home.php');
         exit();
     }
