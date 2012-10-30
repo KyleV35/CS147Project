@@ -1,6 +1,8 @@
 <?php
-    include 'config.php';
-    include 'utils.php';
+    include 'utils/config.php';
+    include 'utils/utils.php';
+    include 'utils/database_functions.php';
+    include 'models/stream.php';
     session_start();
     $title = "Your feeds!";
     $extra_header = "<a href=\"logout.php\" class=\"ui-btn-left\">Logout</a>";
@@ -13,7 +15,6 @@
 <html>
 <head>
 <?php
-    echo '<title>'.$title.'</title>';
     include 'meta.php' //Always include this file, has many necessary, but redundant files
 ?>
 </head>
@@ -21,24 +22,21 @@
 <div data-role="page">
 
 	<?php
-	    include 'header.php';
-	?>
-
-	<div data-role="content">	
-	
-	<?php
-		if ($_SESSION["flash"] != null) {
-		    echo "<p class=\"red_text\">".$_SESSION["flash"]."</p>";
-		    unset($_SESSION["flash"]);
-		}
-		
-		
-        $stream_query = "Select * from Stream where userID = ".$userID.";";
-        $result = mysql_query($stream_query);
+	include 'header.php';
+        echo "<div data-role=\"content\">";
+        // Error Messages
+	if ($_SESSION["flash"] != null) {
+            echo "<p class=\"red_text\">".$_SESSION["flash"]."</p>";
+            unset($_SESSION["flash"]);
+        }
+        
+        /* Populate stream list with streams */
+        $stream_array = get_streams_for_userID($userID);
         echo "<div class=\"stream_list_container\">";
         echo "<ul data-role=\"listview\">";
-        while ($row = mysql_fetch_assoc($result)) {
-            echo "<li><a href=\"#\">".$row['streamName']."</a></li>";
+        foreach ($stream_array as $stream) {
+            $stream_name = $stream->get_stream_name();
+            echo "<li><a href=\"#\">".$stream_name."</a></li>";
         }
         echo "<a id=\"create_feed_button\" href=\"#create_stream_popup\" data-rel=\"popup\" data-role=\"button\">Create New Feed!</a>";
         echo "</ul>";

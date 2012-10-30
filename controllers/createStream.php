@@ -1,8 +1,8 @@
 <?php
     session_start();
     
-    include 'config.php';
-    include 'utils.php';
+    include 'utils/config.php';
+    include 'utils/utils.php';
     
     $stream_name = $_POST['streamName'];
     if (strlen($stream_name) <= 0 ) {

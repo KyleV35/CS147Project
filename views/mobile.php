@@ -4,7 +4,7 @@
         header('Location: home.php');
         exit();
     }
-    $title = "News Now";
+    $title = "Whats up?";
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
 <head>
 <?php
     echo '<title>'.$title.'</title>';
-    include 'meta.php'; //Always include this file, has many necessary, but redundant files
+    include 'utils/meta.php'; //Always include this file, has many necessary, but redundant files
 ?>
 </head>
 <body>
