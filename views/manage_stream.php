@@ -41,7 +41,7 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
                 <div class=\"feed_activation_slider\">
                 <select name=\"flip-1\" id=\"flip-1\" data-role=\"slider\">
                     <option value=\"off\">Off</option>
-                    <option value=\"on\">On</option>
+                    <option value=\"on\" SELECTED>On</option>
                 </select> 
                 </div>
                 <div class=\"placeholder\"></div>

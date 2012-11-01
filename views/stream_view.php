@@ -42,8 +42,9 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                 $article_link = $article->get_link();
                 $article_site_name = $article->get_site_name();
                 $article_description = $article->get_description();
-                echo "<li>
-                    <a href=\"$article_link\">
+                echo "<li> 
+                    <a href=\"../views/article_view.php?streamID=$streamID&
+                        article_link=$article_link\">
                         <div class=\"article_stub_div\">
                         <h3 class=\"allow_overflow article_title\">$article_title</h3>
                         <p class=\"allow_overflow article_site\">$article_site_name - 
@@ -52,6 +53,19 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                         </div>
                     </a>
                     </li>";
+                 /*
+                 
+     
+                    "<a onclick=\"parent.location='$article_link'\">
+                        <div class=\"article_stub_div\">
+                        <h3 class=\"allow_overflow article_title\">$article_title</h3>
+                        <p class=\"allow_overflow article_site\">$article_site_name - 
+                            $rss_filter</p>
+                        <p class=\"allow_overflow\">$article_description</p>
+                        </div>
+                    </a>
+                    </li>";
+                   */ 
             }
         }
                 

@@ -6,7 +6,7 @@ $userID = require_login("mobile.php");
 $streamID = $_GET["streamID"];
 $stream = get_stream_for_streamID($streamID);
 $stream_name = $stream->get_stream_name();
-$title = "Add a source to: ".$stream_name;
+$title = "Add source!";
 $extra_header = "<a href=\"../views/manage_stream.php?streamID=$streamID\" class=\"ui-btn-left\">Cancel</a>";
     
 ?>
