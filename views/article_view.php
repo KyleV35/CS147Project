@@ -7,7 +7,7 @@ $streamID = $_GET["streamID"];
 $article_link = $_GET["article_link"];
 $title = "Article";
 $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" 
-    class=\"ui-btn-left\">Back</a>";
+    class=\"ui-btn-left\" data-prefetch>Back</a>";
     
 ?>
 

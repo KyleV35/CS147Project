@@ -33,7 +33,7 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
         }
         
         $rss_feed_array = get_rss_feeds_for_stream($streamID);
-        echo "<ul data-role=\"listview\" data-filter=\"true\">";
+        echo "<ul data-role=\"listview\" data-filter=\"true\" data-filter-placeholder=\"Filter Articles...\">";
         $all_articles_array = array();
         foreach ($rss_feed_array as $rss_feed) {
             $all_articles_array = array_merge($all_articles_array,$rss_feed->get_article_list());
