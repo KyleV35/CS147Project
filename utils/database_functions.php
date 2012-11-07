@@ -221,4 +221,13 @@
             header( "Location: ../views/error.php");
         }
     }
+    
+    function update_name_for_stream($streamID, $name) {
+        $query = "UPDATE Stream SET streamName=\"$name\" WHERE streamID=$streamID;";
+        $result = mysql_query($query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
+    }
 ?>

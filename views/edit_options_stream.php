@@ -19,14 +19,15 @@
         }
         
         echo "<a href=\"#update_name_popup\" data-role=\"button\" data-rel=\"popup\">Update Name!</a>";
-        echo "<a href=\"#delete_stream_popup\" data-role=\"button\" data-rel=\"popup\">Delete Stream!</a>";
+        echo "<a href=\"#delete_stream_popup\" data-theme=\"delete\" data-role=\"button\" data-rel=\"popup\">Delete Stream!</a>";
 	?>
 	    
         
         <!-- Update Name Popup -->
         <div data-role="popup" id="update_name_popup" class="popup">
-	    <form action="../controllers/update_stream_name.php?streamID=<?=$streamID?>" method="post">
+	    <form action="../controllers/update_stream_name.php" method="post">
                 <input type="text" name="new_stream_name" value="" placeholder="New Stream Name" />
+                <input type="hidden" name="streamID" value="<?=$streamID?>" />
                 <a href="#" data-rel="back" data-role="button" data-inline="true">Cancel</a>
                 <input data-inline="true" data-theme="b" type="submit" value="Update Stream Name!"/>
             </form>
