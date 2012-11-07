@@ -79,6 +79,13 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
         ?>
         
     </div><!-- /content -->
+    
+    <script>
+        $(document).ready(function() {
+            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
+        });
+
+        </script>
 </div><!-- /page -->
 
 </body>

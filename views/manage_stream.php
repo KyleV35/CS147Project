@@ -73,6 +73,7 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
     
     <script>
     $( document ).ready(function(){
+        saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>");
         $( ".feed_slider" ).bind( "change", function(event, ui) {
             var slider= $(this);
             var active_status = slider.val();

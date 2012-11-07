@@ -46,6 +46,12 @@ $extra_header = "<a href=\"../views/add_source_view.php?streamID=$streamID\" cla
         ?>
         
     </div><!-- /content -->
+    <script>
+    $(document).ready(function() {
+            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>");
+            
+        });
+    </script>
 </div><!-- /page -->
 
 </body>

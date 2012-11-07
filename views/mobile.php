@@ -1,9 +1,11 @@
 <?php
     session_start();
+    /*
     if ($_SESSION["userID"] != null) {
         header('Location: home.php');
         exit();
     }
+     * */
     $title = "Whats up?";
 ?>
 
@@ -18,6 +20,19 @@
 <body>
 <div data-role="page">
 
+    <script>
+    $(document).ready(function() {
+        if (localStorage["userID"]!=null && localStorage["last_URL"]!=null) {
+            $.post("../controllers/localSessionLogin.php",
+            {
+                userID : localStorage["userID"]
+            }, function() {
+                window.location= localStorage["last_URL"];
+            });
+        }
+    });
+
+    </script>
 	<?php
 	    include '../views/header.php'
 	?>

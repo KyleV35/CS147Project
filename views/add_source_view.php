@@ -43,6 +43,12 @@ $extra_header = "<a href=\"../views/manage_stream.php?streamID=$streamID\" class
         ?>
         
     </div><!-- /content -->
+    <script>
+    $(document).ready(function() {
+            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>");
+            
+        });
+    </script>
 </div><!-- /page -->
 
 </body>

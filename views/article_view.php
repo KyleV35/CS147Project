@@ -35,6 +35,13 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\"
     
         
     </div><!-- /content -->
+    
+    <script>
+    $(document).ready(function() {
+            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>");
+            
+        });
+    </script>
 </div><!-- /page -->
 
 
