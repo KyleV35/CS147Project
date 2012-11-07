@@ -32,7 +32,7 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
             unset($_SESSION["flash"]);
         }
         
-        $rss_feed_array = get_rss_feeds_for_stream($streamID);
+        $rss_feed_array = get_rss_feeds_for_stream($streamID, TRUE);
         echo "<ul data-role=\"listview\" data-filter=\"true\" data-filter-placeholder=\"Filter Articles...\">";
         $all_articles_array = array();
         foreach ($rss_feed_array as $rss_feed) {

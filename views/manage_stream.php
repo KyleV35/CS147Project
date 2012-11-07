@@ -32,7 +32,7 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
         
         echo "<div class=\"stream_list_container\">";
         echo "<ul data-role=\"listview\">";
-        $rss_feed_array = get_rss_feeds_for_stream($streamID);
+        $rss_feed_array = get_rss_feeds_for_stream($streamID, FALSE);
         foreach ($rss_feed_array as $rss_feed) {
             $rss_feed_site_name= $rss_feed->get_site_name();
             $rss_feed_filter= $rss_feed->get_filter();

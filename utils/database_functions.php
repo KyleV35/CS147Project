@@ -148,9 +148,15 @@
         }
     }
     
-    function get_rss_feeds_for_stream($streamID) {
-        $rss_feeds_query = "SELECT * from RSS_Feeds where rssID in
+    function get_rss_feeds_for_stream($streamID, $only_active) {
+        $rss_feed_query = null;
+        if ($only_active) {
+            $rss_feeds_query = "SELECT * from RSS_Feeds where rssID in
             (select rssID from Has_Feed where streamID=$streamID and active=0);";
+        } else {
+            $rss_feeds_query = "SELECT * from RSS_Feeds where rssID in
+            (select rssID from Has_Feed where streamID=$streamID);";
+        }
         $result = mysql_query($rss_feeds_query);
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
