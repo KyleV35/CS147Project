@@ -26,12 +26,12 @@
 		        unset($_SESSION['flash']);
 		    }
 		?>
-		<form action="../controllers/account_creation.php" method="post">
+	<form action="../controllers/account_creation.php" method="post">
             <input type="text" name="username" value="" placeholder="Username" />
             <input type="password" name="password" value="" placeholder="Password" />
             <input type="submit" value="Create Account!"/>
-		</form>
-	</div><!-- /content -->
+	</form>
+    </div><!-- /content -->
 </div><!-- /page -->
 </body>
 </html>

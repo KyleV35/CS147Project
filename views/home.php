@@ -59,22 +59,9 @@
             saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>");
             
         });
-
         </script>
 	
 </div><!-- /page -->
-
-
-
-<script>
-jQuery('div').live('pagehide', function(event, ui){
-  var page = jQuery(event.target);
-
-  if(page.attr('data-cache') == 'never'){
-    page.remove();
-  };
-});
-</script>
 
 </body>
 </html>

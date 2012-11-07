@@ -29,7 +29,7 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\"
             echo "<p class=\"red_text\">".$_SESSION["flash"]."</p>";
             unset($_SESSION["flash"]);
         }
-        echo "<iframe class=\"article\" src=\"$article_link\"></iframe>";
+        echo "<a href=\"$article_link\">Article!</a>";
         ?>
     
     
@@ -39,8 +39,7 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\"
     <script>
     $(document).ready(function() {
             saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>");
-            
-        });
+    });
     </script>
 </div><!-- /page -->
 
