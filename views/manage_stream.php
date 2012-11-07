@@ -7,7 +7,7 @@ $streamID = $_GET["streamID"];
 $stream = get_stream_for_streamID($streamID);
 $stream_name = $stream->get_stream_name();
 $title = "Manage ".$stream_name;
-$extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\"ui-btn-left\" data-prefetch>$stream_name</a>";
+$extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\"ui-btn-left\">$stream_name</a>";
     
 ?>
 
@@ -36,12 +36,13 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
         foreach ($rss_feed_array as $rss_feed) {
             $rss_feed_site_name= $rss_feed->get_site_name();
             $rss_feed_filter= $rss_feed->get_filter();
+            $rss_feed_id= $rss_feed->get_rssID();
             echo "<li>
                 <div class=\"feed_title_for_management\">$rss_feed_site_name - $rss_feed_filter</div>
                 <div class=\"feed_activation_slider\">
-                <select name=\"flip-1\" id=\"flip-1\" data-role=\"slider\">
-                    <option value=\"off\">Off</option>
-                    <option value=\"on\" SELECTED>On</option>
+                <select class=\"feed_slider\" feed=\"$rss_feed_id\" name=\"flip-1\" data-role=\"slider\">
+                    <option value=\"off\">Hide</option>
+                    <option value=\"on\" SELECTED>Show</option>
                 </select> 
                 </div>
                 <div class=\"placeholder\"></div>
@@ -54,6 +55,22 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
         ?>
         
     </div><!-- /content -->
+    
+    <script>
+    $( document ).ready(function(){
+        $( ".feed_slider" ).bind( "change", function(event, ui) {
+            var slider= $(this);
+            var active_status = slider.val();
+            alert(active_status);
+            $.post("../controllers/update_active_status_for_feed.php",
+            {
+                rssID : slider.attr("feed"),
+                streamID : <?php echo $streamID ?>,
+                active : active_status
+            });
+        });
+    });
+</script>
 </div><!-- /page -->
 
 </body>

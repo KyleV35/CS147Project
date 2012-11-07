@@ -10,7 +10,7 @@ $stream_name = $stream->get_stream_name();
 $site = get_site_for_siteID($siteID);
 $site_name = $site->get_site_name();
 $title = "Select Feed for: ".$site_name;
-$extra_header = "<a href=\"../views/add_source_view.php?streamID=$streamID\" class=\"ui-btn-left\">Cancel</a>";
+$extra_header = "<a href=\"../views/add_source_view.php?streamID=$streamID\" class=\"ui-btn-left\" data-prefetch>Sites</a>";
     
 ?>
 
@@ -33,7 +33,7 @@ $extra_header = "<a href=\"../views/add_source_view.php?streamID=$streamID\" cla
             unset($_SESSION["flash"]);
         }
         
-        echo "<ul data-role=\"listview\" data-filter=\"true\" data-autodividers=\"true\">";
+        echo "<ul data-role=\"listview\" data-filter=\"true\" data-filter-placeholder=\"Filter Feeds...\" data-autodividers=\"true\">";
         $rss_feed_array = get_rss_feeds_for_siteID($siteID);
         foreach ($rss_feed_array as $rss_feed) {
             $rss_feed_filter = $rss_feed->get_filter();

@@ -123,7 +123,7 @@
     }
     
     function get_rss_feeds_for_siteID($siteID) {
-        $rss_query = "Select * from RSS_Feeds where siteID = ".$siteID.";";
+        $rss_query = "Select * from RSS_Feeds where siteID = ".$siteID." ORDER BY filter;";
         $result = mysql_query($rss_query);
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
@@ -150,7 +150,7 @@
     
     function get_rss_feeds_for_stream($streamID) {
         $rss_feeds_query = "SELECT * from RSS_Feeds where rssID in
-            (select rssID from Has_Feed where streamID=$streamID and active='true');";
+            (select rssID from Has_Feed where streamID=$streamID and active=0);";
         $result = mysql_query($rss_feeds_query);
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
@@ -163,5 +163,20 @@
             array_push($rss_array, $rss_feed);
         }
         return $rss_array;
+    }
+    
+    function set_active_for_feed($streamID, $rssID, $should_be_active) {
+        $update_query= null;
+        if ($should_be_active) {
+            $update_query= "UPDATE Has_Feed SET active=0 WHERE streamID=$streamID and rssID = $rssID;";
+        } else {
+            $update_query= "UPDATE Has_Feed SET active=1 WHERE streamID=$streamID and rssID = $rssID;";
+        }
+        echo $update_query;
+        $result = mysql_query($update_query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
     }
 ?>

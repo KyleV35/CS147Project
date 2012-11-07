@@ -30,7 +30,7 @@ $extra_header = "<a href=\"../views/manage_stream.php?streamID=$streamID\" class
             unset($_SESSION["flash"]);
         }
         
-        echo "<ul data-role=\"listview\" data-filter=\"true\" data-autodividers=\"true\">";
+        echo "<ul data-role=\"listview\" data-filter=\"true\" data-filter-placeholder=\"Filter Sites...\" data-autodividers=\"true\">";
         $site_array = get_all_sites();
         foreach ($site_array as $site) {
             $site_name = $site->get_site_name();
