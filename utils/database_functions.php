@@ -212,4 +212,13 @@
             header( "Location: ../views/error.php");
         }
     }
+    
+    function delete_stream($streamID) {
+        $query = "DELETE FROM Stream WHERE streamID=$streamID;";
+        $result = mysql_query($query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
+    }
 ?>

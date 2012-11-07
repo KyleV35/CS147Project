@@ -1,21 +1,10 @@
 <?php
     include_once '../utils/config.php';
     session_start();
-    $title = "Your feeds!";
-    $extra_header = "<a href=\"../controllers/logout.php\" class=\"ui-btn-left\">Logout</a>
-        <a href=\"../views/edit_streams.php\" class=\"ui-btn-right\">Edit</a>";
+    $title = "Edit!";
+    $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Back</a>";
     $userID = require_login("mobile.php");
-    
-        
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-<?php
-    include '../utils/meta.php' //Always include this file, has many necessary, but redundant files
-?>
-</head>
 <body>
 <div data-role="page">
 
@@ -29,15 +18,15 @@
         }
         
         /* Populate stream list with streams */
+        echo "<p class=\"info_text\">Select a stream to edit!</p>";
         $stream_array = get_streams_for_userID($userID);
         echo "<div class=\"stream_list_container\">";
         echo "<ul data-role=\"listview\">";
         foreach ($stream_array as $stream) {
             $stream_name = $stream->get_stream_name();
             $streamID = $stream->get_streamID();
-            echo "<li><a href=\"../views/stream_view.php?streamID=$streamID\">".$stream_name."</a></li>";
+            echo "<li><a href=\"../views/edit_options_stream.php?streamID=$streamID\">".$stream_name."</a></li>";
         }
-        echo "<a id=\"create_feed_button\" href=\"#create_stream_popup\" data-rel=\"popup\" data-role=\"button\">Create New Feed!</a>";
         echo "</ul>";
         echo "</div>";
 	?>
@@ -57,12 +46,10 @@
         
         <script>
         $(document).ready(function() {
-            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>");
-            
+            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
         });
         </script>
 	
 </div><!-- /page -->
 
 </body>
-</html>

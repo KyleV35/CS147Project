@@ -3,7 +3,9 @@
 ?>
 <meta charset=utf-8> 
 <link rel="stylesheet" type="text/css" href="../static/stylesheets/reset.css">
-<link rel="stylesheet" type="text/css" href="../static/stylesheets/main.css?version=1">
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/main.css?version=3">
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/delete.css?version=1">
+
 <link href='http://fonts.googleapis.com/css?family=Krona+One' rel='stylesheet' type='text/css'>
 <!-- Mobile Shit -->
 <meta name="apple-mobile-web-app-capable" content="yes" />  
