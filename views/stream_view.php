@@ -34,14 +34,20 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
         
         $rss_feed_array = get_rss_feeds_for_stream($streamID);
         echo "<ul data-role=\"listview\" data-filter=\"true\">";
+        $all_articles_array = array();
         foreach ($rss_feed_array as $rss_feed) {
-            $article_array = $rss_feed->get_article_list();
-            $rss_filter = $rss_feed->get_filter();
-            foreach ($article_array as $article) {
+            $all_articles_array = array_merge($all_articles_array,$rss_feed->get_article_list());
+        }
+        $sorted_articles = uasort($all_articles_array, 'compare_articles');
+        foreach ($all_articles_array as $article) {
                 $article_title = $article->get_title();
                 $article_link = $article->get_link();
                 $article_site_name = $article->get_site_name();
                 $article_description = $article->get_description();
+                $rss_filter = $article->get_filter();
+                $date = $article->get_date();
+                $day = $date->get_day();
+                $time = $date->get_time();
                 echo "<li> 
                     <a href=\"../views/article_view.php?streamID=$streamID&
                         article_link=$article_link\">
@@ -50,6 +56,7 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                         <p class=\"allow_overflow article_site\">$article_site_name - 
                             $rss_filter</p>
                         <p class=\"allow_overflow\">$article_description</p>
+                        <p class=\"allow_overflow\">$day $time</p>
                         </div>
                     </a>
                     </li>";
@@ -66,7 +73,6 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                     </a>
                     </li>";
                    */ 
-            }
         }
                 
         echo "</ul>";

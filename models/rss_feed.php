@@ -27,7 +27,9 @@ class RSS_Feed {
         foreach ($rss_feed->channel->item as $article) {
             $filtered_description = strip_tags($article->description);
             $site_name = $this->get_site_name();
-            $article = new Article($article->title, $article->link, $filtered_description, $site_name);
+            $filter = $this->filter;
+            $article = new Article($article->title, $article->link, $filtered_description, 
+                    $site_name,$filter,$article->pubDate);
             array_push($article_title_array, $article);
         }
         return $article_title_array;  

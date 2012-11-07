@@ -1,5 +1,7 @@
 <?php
 
+include_once '../models/date.php';
+
     /* This function redirects the user to $failure_page if the
      * the user is not logged in.
      * $failure_page = relative OR absolute url of page to go to if user is not
@@ -33,5 +35,11 @@
             header( "Location: $failure_page");
             exit();
         }
+    }
+    
+    function compare_articles($article1,$article2) {
+        $date1 = $article1->get_date();
+        $date2 = $article2->get_date();
+        return Date::compare_dates($date1, $date2);
     }
 ?>
