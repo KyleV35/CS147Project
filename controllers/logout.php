@@ -8,10 +8,9 @@
 <script>
     $(document).ready(function() {
        if (clearState()) {
-           alert("Cleared");
            window.location = "../views/mobile.php";
        } else {
-           alert("Not Cleared");
+           window.location = "../views/mobile.php";
        }
     });
 </script>
