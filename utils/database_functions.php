@@ -171,6 +171,33 @@
         return $rss_array;
     }
     
+    /* Returns an array of arrays.  The inner array is built such that
+     * array["filter"] is the filter, array["rssID"] is the rssID,
+     * and array["active"] is the active status, and array["siteName"] is
+     * the siteName.
+     */
+    function get_filter_rssID_active_siteName_for_streamID($streamID) {
+        $query = "SELECT filter, Has_Feed.rssID AS rssID, active, siteName
+                  FROM ((Has_Feed JOIN RSS_Feeds ON Has_Feed.rssID = RSS_Feeds.rssID)
+                            JOIN Sites ON RSS_Feeds.siteID = Sites.siteID)
+                  WHERE streamID=$streamID;";
+        $result = mysql_query($query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
+        $result_array = array();
+        while ($row = mysql_fetch_assoc($result)) {
+            $filter_rssID_active = array();
+            $filter_rssID_active["filter"] = $row["filter"];
+            $filter_rssID_active["rssID"] = $row["rssID"];
+            $filter_rssID_active["active"] = $row["active"];
+            $filter_rssID_active["siteName"] = $row["siteName"];
+            array_push($result_array, $filter_rssID_active);
+        }
+        return $result_array;
+    }
+    
     function set_active_for_feed($streamID, $rssID, $should_be_active) {
         $update_query= null;
         if ($should_be_active) {
