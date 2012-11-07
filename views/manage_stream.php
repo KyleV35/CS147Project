@@ -81,6 +81,8 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
                 rssID : slider.attr("feed"),
                 streamID : <?php echo $streamID ?>,
                 active : active_status
+            }, function() {
+                $.mobile.loadPage("../views/stream_view.php?streamID=<?php echo $streamID?>", {showLoadMsg:true});
             });
         });
     });
