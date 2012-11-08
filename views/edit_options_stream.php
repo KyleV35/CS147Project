@@ -6,6 +6,15 @@
     $userID = require_login("mobile.php");
     $streamID = $_GET["streamID"];
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<?php
+    echo '<title>'.$title.'</title>';
+    include '../utils/meta.php'; //Always include this file, has many necessary, but redundant files
+?>
+</head>
 <body>
 <div data-role="page">
 
@@ -29,7 +38,7 @@
                 <input type="text" name="new_stream_name" value="" placeholder="New Stream Name" />
                 <input type="hidden" name="streamID" value="<?=$streamID?>" />
                 <a href="#" data-rel="back" data-role="button" data-inline="true">Cancel</a>
-                <input data-inline="true" data-theme="b" type="submit" value="Update Name!"/>
+                <input data-inline="true" data-theme="b" type="submit" value="Update!"/>
             </form>
 	</div>
 	<!-- /Update Name Popup -->
@@ -39,7 +48,7 @@
 	    <form action="../controllers/delete_stream.php?streamID=<?=$streamID?>" method="get">
                 <p>Are you sure you want to delete this stream?</p>
                 <a href="#" data-rel="back" data-role="button" data-inline="true">Cancel</a>
-                <input data-theme="delete" data-inline="true" type="submit" value="Delete Stream!"/>
+                <input data-theme="delete" data-inline="true" type="submit" value="Delete!"/>
             </form>
 	</div>
 	<!-- /Delete Stream Popup -->
@@ -55,3 +64,4 @@
 </div><!-- /page -->
 
 </body>
+</html>
