@@ -29,7 +29,7 @@
                 <input type="text" name="new_stream_name" value="" placeholder="New Stream Name" />
                 <input type="hidden" name="streamID" value="<?=$streamID?>" />
                 <a href="#" data-rel="back" data-role="button" data-inline="true">Cancel</a>
-                <input data-inline="true" data-theme="b" type="submit" value="Update Stream Name!"/>
+                <input data-inline="true" data-theme="b" type="submit" value="Update Name!"/>
             </form>
 	</div>
 	<!-- /Update Name Popup -->
