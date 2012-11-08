@@ -3,7 +3,7 @@
 ?>
 <meta charset=utf-8> 
 <link rel="stylesheet" type="text/css" href="../static/stylesheets/reset.css">
-<link rel="stylesheet" type="text/css" href="../static/stylesheets/main.css?version=3">
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/main.css?version=4">
 <link rel="stylesheet" type="text/css" href="../static/stylesheets/delete.css?version=1">
 
 <link href='http://fonts.googleapis.com/css?family=Krona+One' rel='stylesheet' type='text/css'>
@@ -19,7 +19,6 @@
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 <script src="../static/javascripts/localStorage.js"></script>
-<script src="../static/javascripts/iscroll.js"></script>
 <script>
 $.ajaxSetup ({
 // Disable caching of AJAX responses

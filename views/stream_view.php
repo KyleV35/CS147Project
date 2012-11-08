@@ -9,7 +9,7 @@ $stream_name = $stream->get_stream_name();
 $title = $stream_name;
 $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams List</a>
 <a href=\"../views/manage_stream.php?streamID=$streamID\" class=\"ui-btn-right\" 
-    data-icon=\"gear\" data-prefetch>Manage</a>";
+    data-icon=\"gear\">Manage</a>";
     
 ?>
 
@@ -49,13 +49,22 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                 $day = $date->get_day();
                 $time = $date->get_time();
                 echo "<li> 
-                    <a href=\"../views/article_view.php?streamID=$streamID&
-                        article_link=$article_link\">
+                    <a class=\"article_stub\" href=\"$article_link\">
                         <div class=\"article_stub_div\">
                         <h3 class=\"allow_overflow article_title\">$article_title</h3>
                         <p class=\"allow_overflow article_site\">$article_site_name - 
                             $rss_filter</p>
-                        <p class=\"allow_overflow\">$article_description</p>
+                        <p class=\"description allow_overflow\">$article_description</p>
+                        </div>
+                    </a>
+                    </li>";
+                /*"<li> 
+                    <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$article_title&article_link=$article_link\">
+                        <div class=\"article_stub_div\">
+                        <h3 class=\"allow_overflow article_title\">$article_title</h3>
+                        <p class=\"allow_overflow article_site\">$article_site_name - 
+                            $rss_filter</p>
+                        <p class=\"description allow_overflow\">$article_description</p>
                         <p class=\"allow_overflow\">$day $time</p>
                         </div>
                     </a>
@@ -85,6 +94,23 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
             saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
         });
     </script>
+    <!--
+    <script>
+        $(document).ready(function() {
+            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
+            $(".article_stub").live('click',function(event) {
+                event.preventDefault();
+                var link = this;
+                var description = $(this).children(".article_stub_div").children(".description").text();
+                $.post("../controllers/article.php", {
+                    description: description
+                }, function() {               
+                    //window.location= link.valueOf();
+                });
+            });
+        });
+    </script>
+    -->
 </div><!-- /page -->
 
 </body>

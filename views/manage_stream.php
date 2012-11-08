@@ -83,7 +83,7 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
                 streamID : <?php echo $streamID ?>,
                 active : active_status
             }, function() {
-                $.mobile.loadPage("../views/stream_view.php?streamID=<?php echo $streamID?>", {showLoadMsg:true});
+                //$.mobile.loadPage("../views/stream_view.php?streamID=<?php echo $streamID?>", {showLoadMsg:true});
             });
         });
     });

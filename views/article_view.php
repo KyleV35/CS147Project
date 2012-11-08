@@ -8,7 +8,9 @@ $article_link = $_GET["article_link"];
 $title = "Article";
 $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" 
     class=\"ui-btn-left\" data-prefetch>Back</a>";
-    
+$article_title = $_GET["article_title"];
+$article_description = $_SESSION["description"];
+unset($_SESSION["description"]);
 ?>
 
 <!DOCTYPE html>
@@ -29,18 +31,17 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\"
             echo "<p class=\"red_text\">".$_SESSION["flash"]."</p>";
             unset($_SESSION["flash"]);
         }
-        echo "<a href=\"$article_link\">Article!</a>";
         ?>
+        
+    <h1 class="article_title text_center"><?=$article_title?></h1>
+    <p>Description:</p>
+    <p><?=$article_description?></p>
+    <a data-role="button" href="<?=$article_link?>">View this Article!</a>
     
     
         
     </div><!-- /content -->
     
-    <script>
-    $(document).ready(function() {
-            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>");
-    });
-    </script>
 </div><!-- /page -->
 
 

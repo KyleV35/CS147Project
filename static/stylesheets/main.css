@@ -88,6 +88,10 @@ http://westciv.com/tools/gradients/index-moz.html
     color: #1122CC;
 }
 
+.text_center {
+    text-align:center;
+}
+
 .feed_title_for_management {
     float:left;
     max-width: 60%;
