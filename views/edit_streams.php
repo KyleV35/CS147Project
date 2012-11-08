@@ -5,7 +5,16 @@
     $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Back</a>";
     $userID = require_login("mobile.php");
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+<?php
+    echo '<title>'.$title.'</title>';
+    include '../utils/meta.php'; //Always include this file, has many necessary, but redundant files
+?>
+</head>
 <body>
+    
 <div data-role="page">
 
 	<?php
@@ -53,3 +62,4 @@
 </div><!-- /page -->
 
 </body>
+</html>
