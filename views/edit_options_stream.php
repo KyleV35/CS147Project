@@ -36,7 +36,6 @@
         
         <!-- Delete Stream Popup -->
         <div data-role="popup" id="delete_stream_popup" class="popup">
-            <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 	    <form action="../controllers/delete_stream.php?streamID=<?=$streamID?>" method="get">
                 <p>Are you sure you want to delete this stream?</p>
                 <a href="#" data-rel="back" data-role="button" data-inline="true">Cancel</a>
