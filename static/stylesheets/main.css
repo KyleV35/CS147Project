@@ -114,6 +114,10 @@ http://westciv.com/tools/gradients/index-moz.html
     -webkit-overflow-scrolling:touch;
 }
 
+.article_link {
+    display: none !important;
+}
+
 .article {
     height: 400px;
     width: 100%;
@@ -128,5 +132,16 @@ http://westciv.com/tools/gradients/index-moz.html
 
 .info_text {
     color: green;
+}
+
+.description {
+    display: none !important;
+}
+
+.description_background {
+    background-color: #f3d2ac;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    padding: 10px;
 }
 

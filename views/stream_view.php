@@ -10,7 +10,7 @@ $title = $stream_name;
 $url_safe_streamID = urlencode($streamID);
 $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams List</a>
 <a href=\"../views/manage_stream.php?streamID=$url_safe_streamID\" class=\"ui-btn-right\" 
-    data-icon=\"gear\">Manage</a>";
+    data-icon=\"gear\" >Manage</a>";
     
 ?>
 
@@ -49,24 +49,16 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                 $date = $article->get_date();
                 $day = $date->get_day();
                 $time = $date->get_time();
-                echo "<li> 
-                    <a class=\"article_stub\" href=\"$article_link\">
+                $url_encoded_link = urlencode($article_link);
+                echo 
+                "<li> 
+                    <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$article_title\">
                         <div class=\"article_stub_div\">
+                        <p class=\"article_link\">$url_encoded_link</p>
                         <h3 class=\"allow_overflow article_title\">$article_title</h3>
                         <p class=\"allow_overflow article_site\">$article_site_name - 
                             $rss_filter</p>
                         <p class=\"description allow_overflow\">$article_description</p>
-                        </div>
-                    </a>
-                    </li>";
-                /*"<li> 
-                    <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$article_title&article_link=$article_link\">
-                        <div class=\"article_stub_div\">
-                        <h3 class=\"allow_overflow article_title\">$article_title</h3>
-                        <p class=\"allow_overflow article_site\">$article_site_name - 
-                            $rss_filter</p>
-                        <p class=\"description allow_overflow\">$article_description</p>
-                        <p class=\"allow_overflow\">$day $time</p>
                         </div>
                     </a>
                     </li>";
@@ -93,25 +85,21 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
     <script>
         $(document).ready(function() {
             saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
-        });
-    </script>
-    <!--
-    <script>
-        $(document).ready(function() {
-            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
             $(".article_stub").live('click',function(event) {
                 event.preventDefault();
-                var link = this;
+                var link = $(this).children(".article_stub_div").children(".article_link").text();
                 var description = $(this).children(".article_stub_div").children(".description").text();
+                var source = $(this).children(".article_stub_div").children(".article_site").text();
                 $.post("../controllers/article.php", {
-                    description: description
+                    description: description,
+                    source : source,
+                    link: decodeURIComponent(link)
                 }, function() {               
                     //window.location= link.valueOf();
                 });
             });
         });
     </script>
-    -->
 </div><!-- /page -->
 
 </body>

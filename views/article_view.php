@@ -10,7 +10,8 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\"
     class=\"ui-btn-left\" data-prefetch>Back</a>";
 $article_title = $_GET["article_title"];
 $article_description = $_SESSION["description"];
-unset($_SESSION["description"]);
+$article_source = $_SESSION["source"];
+$article_link = urldecode($_SESSION["link"]);
 ?>
 
 <!DOCTYPE html>
@@ -33,9 +34,18 @@ unset($_SESSION["description"]);
         }
         ?>
         
-    <h1 class="article_title text_center"><?=$article_title?></h1>
-    <p>Description:</p>
-    <p><?=$article_description?></p>
+    <h1 class="article_title text_center"><?=stripcslashes($article_title)?></h1>
+    <p class="text_center article_site">Source: <?=$article_source?></p>
+    <div class="description_background">
+    <?php
+        if ($article_description!=null) {
+            $cleaned_description = stripcslashes($article_description);
+            echo "<p>$cleaned_description</p>";
+        } else {
+            echo "<p>Sorry, no description was available!</p>";
+        }
+    ?>
+    </div>
     <a data-role="button" href="<?=$article_link?>">View this Article!</a>
     
     
