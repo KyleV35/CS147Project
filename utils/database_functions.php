@@ -138,6 +138,31 @@
         return $rss_array;
     }
     
+    /* The difference between this function and get_rss_feeds_for_siteID() is 
+     * that this method makes sure not to return any RSS feeds that the user
+     * already has.
+     */
+    function get_potential_rss_feeds_for_siteID($siteID, $streamID) {
+        $rss_query = "
+            Select * 
+            from RSS_Feeds 
+            where siteID = $siteID
+            and rssID not in (select rssID from Has_Feed where streamID = $streamID) 
+            ORDER BY filter;";
+        $result = mysql_query($rss_query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
+        $rss_array = array();
+        while ($row = mysql_fetch_assoc($result)) {
+            $rss_feed = new RSS_Feed($row["rssID"], $row["siteID"], 
+                    $row["filter"], $row["url"]);
+            array_push($rss_array, $rss_feed);
+        }
+        return $rss_array;
+    }
+    
     function add_feed_to_stream($rssID,$streamID) {
         $insert_query = "INSERT INTO Has_Feed VALUES ($streamID,$rssID,'true');";
         $result = mysql_query($insert_query);

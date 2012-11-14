@@ -34,7 +34,7 @@ $extra_header = "<a href=\"../views/add_source_view.php?streamID=$streamID\" cla
         }
         
         echo "<ul data-role=\"listview\" data-filter=\"true\" data-filter-placeholder=\"Filter Feeds...\" data-autodividers=\"true\">";
-        $rss_feed_array = get_rss_feeds_for_siteID($siteID);
+        $rss_feed_array = get_potential_rss_feeds_for_siteID($siteID,$streamID);
         foreach ($rss_feed_array as $rss_feed) {
             $rss_feed_filter = $rss_feed->get_filter();
             $rssID = $rss_feed->get_rssID();
