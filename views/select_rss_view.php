@@ -22,7 +22,7 @@ $extra_header = "<a href=\"../views/add_source_view.php?streamID=$streamID\" cla
 ?>
 </head>
 <body>
-<div data-role="page">
+<div data-role="page" data-url="<?=$_SERVER["REQUEST_URI"]?>">
 
 	<?php
 	include '../views/header.php';

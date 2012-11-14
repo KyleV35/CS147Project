@@ -11,7 +11,7 @@ if ($success) {
 } else {
     $_SESSION["flash"]= "Something happened on our side, we'll work to fix it!";
 }
-header("Location: ../views/stream_view?streamID=$streamID");
+header("Location: ../views/manage_stream?streamID=$streamID");
 
 /*
  * To change this template, choose Tools | Templates

@@ -21,7 +21,7 @@ unset($_SESSION["description"]);
 ?>
 </head>
 <body>
-<div data-role="page">
+<div data-role="page" data-url="<?=$_SERVER["REQUEST_URI"]?>">
 
 	<?php
 	include '../views/header.php';

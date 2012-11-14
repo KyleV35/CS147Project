@@ -19,16 +19,25 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
 ?>
 </head>
 <body>
-<div data-role="page">
+<div data-role="page" data-url="<?=$_SERVER["REQUEST_URI"]?>">
 
 	<?php
 	include '../views/header.php';
         echo "<div data-role=\"content\">";
         // Error Messages
-	if ($_SESSION["flash"] != null) {
-            echo "<p class=\"red_text\">".$_SESSION["flash"]."</p>";
+	if ($_SESSION["flash"] != null or $_SESSION["info"] != null) {
+            echo "<div class=\"info_box\">";
+            if ($_SESSION["flash"]!=null) {
+                echo "<p class=\"red_text\">".$_SESSION["flash"]."</p>";
+            }
+            if ($_SESSION["info"]!=null) {
+                echo "<p class=\"info_text\">".$_SESSION["info"]."</p>";
+            }
+            echo "</div>";
             unset($_SESSION["flash"]);
+            unset($_SESSION["info"]);
         }
+        // End of Error Message
         
         echo "<div class=\"stream_list_container\">";
         echo "<ul data-role=\"listview\">";

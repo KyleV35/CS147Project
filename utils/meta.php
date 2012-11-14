@@ -3,7 +3,7 @@
 ?>
 <meta charset=utf-8> 
 <link rel="stylesheet" type="text/css" href="../static/stylesheets/reset.css">
-<link rel="stylesheet" type="text/css" href="../static/stylesheets/main.css?version=4">
+<link rel="stylesheet" type="text/css" href="../static/stylesheets/main.css?version=6">
 <link rel="stylesheet" type="text/css" href="../static/stylesheets/delete.css?version=1">
 
 <link href='http://fonts.googleapis.com/css?family=Krona+One' rel='stylesheet' type='text/css'>

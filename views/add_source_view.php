@@ -19,7 +19,7 @@ $extra_header = "<a href=\"../views/manage_stream.php?streamID=$streamID\" class
 ?>
 </head>
 <body>
-<div data-role="page">
+<div data-role="page" data-url="<?=$_SERVER["REQUEST_URI"]?>">
 
 	<?php
 	include '../views/header.php';

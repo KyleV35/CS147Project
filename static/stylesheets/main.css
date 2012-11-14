@@ -121,8 +121,12 @@ http://westciv.com/tools/gradients/index-moz.html
     -webkit-overflow-scrolling:touch;
 }
 
-.info_text {
+.info_box {
     clear:both;
-    margin-bottom:20px;
+    padding-bottom:25px;
+}
+
+.info_text {
+    color: green;
 }
 

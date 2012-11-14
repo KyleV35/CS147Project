@@ -16,13 +16,13 @@
 ?>
 </head>
 <body>
-<div data-role="page">
+<div data-role="page" data-url="<?=$_SERVER["REQUEST_URI"]?>">
 
 	<?php
 	include '../views/header.php';
         echo "<div data-role=\"content\">";
         // Error Messages
-	if ($_SESSION["flash"] != null) {
+	if ($_SESSION["flash"] != null or $_SESSION["info"]) {
             echo "<p class=\"red_text\">".$_SESSION["flash"]."</p>";
             unset($_SESSION["flash"]);
         }
