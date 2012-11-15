@@ -12,6 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="//cdn.optimizely.com/js/139735782.js"></script>
 <?php
     include '../utils/meta.php' //Always include this file, has many necessary, but redundant files
 ?>
