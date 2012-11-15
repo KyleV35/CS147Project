@@ -27,7 +27,7 @@
         }
         
         /* Populate stream list with streams */
-        echo "<p class=\"info_text\">Select a stream to edit!</p>";
+        echo "<div class=\"info_box\"><p class=\"info_text\">Select a stream to edit!</p></div>";
         $stream_array = get_streams_for_userID($userID);
         echo "<div class=\"stream_list_container\">";
         echo "<ul data-role=\"listview\">";
