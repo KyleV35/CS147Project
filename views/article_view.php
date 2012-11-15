@@ -12,6 +12,7 @@ $article_title = $_GET["article_title"];
 $article_description = $_SESSION["description"];
 $article_source = $_SESSION["source"];
 $article_link = urldecode($_SESSION["link"]);
+$article_pub_date = $_SESSION["pub_date"];
 ?>
 
 <!DOCTYPE html>
@@ -34,19 +35,20 @@ $article_link = urldecode($_SESSION["link"]);
         }
         ?>
         
-    <h1 class="article_title text_center"><?=stripcslashes($article_title)?></h1>
-    <p class="text_center article_site">Source: <?=$article_source?></p>
+    <h1 class="article_title"><?=stripcslashes($article_title)?></h1>
+    <p class="article_site_large"><?=$article_source?></p>
+    <p class="pub_date"><?=$article_pub_date?></p>
     <div class="description_background">
     <?php
         if ($article_description!=null) {
             $cleaned_description = stripcslashes($article_description);
-            echo "<p>$cleaned_description</p>";
+            echo "<p>Description:</p><br/><p>$cleaned_description</p>";
         } else {
             echo "<p>Sorry, no description was available!</p>";
         }
     ?>
     </div>
-    <a data-role="button" href="<?=$article_link?>">View this Article!</a>
+    <a data-role="button" inline="true" href="<?=$article_link?>">View this Article!</a>
     
     
         

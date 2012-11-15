@@ -19,22 +19,6 @@ http://westciv.com/tools/gradients/index-moz.html
     margin-bottom: 10px;
 }
 
-.button {
-    border-radius: 15px;
-    background-color: #cccccc;
-    width: 200px;
-    height: 50px;
-    margin: auto;
-    margin-bottom: 10px;
-    -webkit-box-shadow: 8px 8px 5px #888;
-    box-shadow: 8px 8px 5px #888;
-}
-
-.button :hover {
-    background-color: #999999;
-    border-radius: 15px;
-}
-
 .button_text {
     text-align:center;
     line-height:50px;
@@ -139,9 +123,18 @@ http://westciv.com/tools/gradients/index-moz.html
 }
 
 .description_background {
-    background-color: #f3d2ac;
     -moz-border-radius: 15px;
     border-radius: 15px;
+    margin-top: 15px;
     padding: 10px;
 }
 
+.article_site_large {
+    padding-bottom: 3px;
+    padding-top:3px;
+    color: #009933;
+}
+
+.hidden {
+    display: none !important;
+}

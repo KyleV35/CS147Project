@@ -47,8 +47,9 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                 $article_description = $article->get_description();
                 $rss_filter = $article->get_filter();
                 $date = $article->get_date();
+                $year = $date->get_year();
+                $month = $date->get_month();
                 $day = $date->get_day();
-                $time = $date->get_time();
                 $url_encoded_link = urlencode($article_link);
                 echo 
                 "<li> 
@@ -59,6 +60,7 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                         <p class=\"allow_overflow article_site\">$article_site_name - 
                             $rss_filter</p>
                         <p class=\"description allow_overflow\">$article_description</p>
+                        <p class=\"pub_date hidden allow_overflow\">$month $day, $year</p>
                         </div>
                     </a>
                     </li>";
@@ -90,10 +92,12 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                 var link = $(this).children(".article_stub_div").children(".article_link").text();
                 var description = $(this).children(".article_stub_div").children(".description").text();
                 var source = $(this).children(".article_stub_div").children(".article_site").text();
+                var pub_date = $(this).children(".article_stub_div").children(".pub_date").text();
                 $.post("../controllers/article.php", {
                     description: description,
                     source : source,
-                    link: decodeURIComponent(link)
+                    link: decodeURIComponent(link),
+                    pub_date: pub_date
                 }, function() {               
                     //window.location= link.valueOf();
                 });
