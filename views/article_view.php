@@ -48,11 +48,23 @@ $article_pub_date = $_SESSION["pub_date"];
         }
     ?>
     </div>
-    <a data-role="button" inline="true" href="<?=$article_link?>">View this Article!</a>
+    <a id="view_article_button" data-role="button" inline="true" href="<?=$article_link?>">View this Article!</a>
     
     
         
     </div><!-- /content -->
+    
+    <script>
+        $(document).ready(function() {
+           $("#view_article_button").click(function() {
+               $.post("../controllers/view_article_controller.php", {
+                   userID: <?=$userID?>
+               }, function() {
+                   
+               }) ;
+           });
+        });
+    </script>
     
 </div><!-- /page -->
 

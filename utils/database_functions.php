@@ -255,4 +255,52 @@
             header( "Location: ../views/error.php");
         }
     }
+    
+    
+    function add_article_description_view($userID) {
+        $query = "Update Article_Description_Views set views=views+1 where userID=$userID;";
+        $result = mysql_query($query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
+        echo $result;
+    }
+    
+    function add_article_link_view($userID) {
+        $query = "Update Article_Link_Views set views=views+1 where userID=$userID;";
+        $result = mysql_query($query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+        }
+        echo $result;
+    }
+    
+    function create_user($username, $password) {
+        $encrypted_password = crypt($password, $GLOBALS["salt"]);
+        $insert_query = "INSERT INTO User VALUES (NULL,\"$username\",\"$encrypted_password\");";
+        if (mysql_query($insert_query)) {
+            $userID = mysql_insert_id();
+            $analytics_query = "INSERT INTO Article_Description_Views VALUES (0,$userID);";
+            $result = mysql_query($analytics_query);
+            if (!$result) {
+                $_SESSION['flash'] = "Something went wrong on our end!  We'll work to fix it!";
+                header("Location: ../views/create_account.php");
+            }
+            $analytics_query2 = "INSERT INTO Article_Link_Views VALUES (0,$userID);";
+            $result2 = mysql_query($analytics_query2);
+            if (!$result2) {
+                $_SESSION['flash'] = "Something went wrong on our end!  We'll work to fix it!";
+                header("Location: ../views/create_account.php");
+            }
+            $_SESSION["userID"] = $userID;
+            header ("Location: ../views/home.php");
+            exit();
+        } else {
+            $_SESSION['flash'] = "Something went wrong on our end!  We'll work to fix it!";
+            header("Location: ../views/create_account.php");
+            exit();
+        }
+    }
 ?>

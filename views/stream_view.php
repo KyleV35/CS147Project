@@ -51,9 +51,10 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                 $month = $date->get_month();
                 $day = $date->get_day();
                 $url_encoded_link = urlencode($article_link);
+                $url_encoded_title = urlencode($article_title);
                 echo 
                 "<li> 
-                    <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$article_title\">
+                    <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$url_encoded_title\">
                         <div class=\"article_stub_div\">
                         <p class=\"article_link\">$url_encoded_link</p>
                         <h3 class=\"allow_overflow article_title\">$article_title</h3>
@@ -87,8 +88,7 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
     <script>
         $(document).ready(function() {
             saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
-            $(".article_stub").live('click',function(event) {
-                event.preventDefault();
+            $(".article_stub").click(function(event) {
                 var link = $(this).children(".article_stub_div").children(".article_link").text();
                 var description = $(this).children(".article_stub_div").children(".description").text();
                 var source = $(this).children(".article_stub_div").children(".article_site").text();
@@ -97,9 +97,10 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                     description: description,
                     source : source,
                     link: decodeURIComponent(link),
-                    pub_date: pub_date
+                    pub_date: pub_date,
+                    userID:<?=$userID?>
                 }, function() {               
-                    //window.location= link.valueOf();
+                    $(this).click(function(event){});
                 });
             });
         });
