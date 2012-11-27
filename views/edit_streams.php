@@ -2,7 +2,7 @@
     include_once '../utils/config.php';
     session_start();
     $title = "Edit!";
-    $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Back</a>";
+    $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefetch>Back</a>";
     $userID = require_login("mobile.php");
 ?>
 <!DOCTYPE html>
@@ -34,7 +34,7 @@
         foreach ($stream_array as $stream) {
             $stream_name = $stream->get_stream_name();
             $streamID = $stream->get_streamID();
-            echo "<li><a href=\"../views/edit_options_stream.php?streamID=$streamID\">".$stream_name."</a></li>";
+            echo "<li><a href=\"../views/edit_options_stream.php?streamID=$streamID\" data-prefetch>".$stream_name."</a></li>";
         }
         echo "</ul>";
         echo "</div>";
@@ -53,11 +53,13 @@
         
 	</div><!-- /content -->
         
+        <!--
         <script>
         $(document).ready(function() {
             saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
         });
         </script>
+        -->
 	
 </div><!-- /page -->
 

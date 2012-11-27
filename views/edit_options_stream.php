@@ -2,7 +2,7 @@
     include_once '../utils/config.php';
     session_start();
     $title = "Edit!";
-    $extra_header = "<a href=\"../views/edit_streams.php\" class=\"ui-btn-left\">Streams</a>";
+    $extra_header = "<a href=\"../views/edit_streams.php\" class=\"ui-btn-left\" data-prefetch>Streams</a>";
     $userID = require_login("mobile.php");
     $streamID = $_GET["streamID"];
 ?>
@@ -55,11 +55,13 @@
         
 	</div><!-- /content -->
         
+        <!--
         <script>
         $(document).ready(function() {
             saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
         });
         </script>
+        -->
 	
 </div><!-- /page -->
 

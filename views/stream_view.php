@@ -8,9 +8,9 @@ $stream = get_stream_for_streamID($streamID);
 $stream_name = $stream->get_stream_name();
 $title = $stream_name;
 $url_safe_streamID = urlencode($streamID);
-$extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams List</a>
+$extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefetch>Streams List</a>
 <a href=\"../views/manage_stream.php?streamID=$url_safe_streamID\" class=\"ui-btn-right\" 
-    data-icon=\"gear\" >Manage</a>";
+    data-icon=\"gear\" data-prefetch>Manage</a>";
     
 ?>
 
@@ -54,7 +54,7 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Streams Lis
                 $url_encoded_title = urlencode($article_title);
                 echo 
                 "<li> 
-                    <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$url_encoded_title\">
+                    <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$url_encoded_title\" data-prefetch>
                         <div class=\"article_stub_div\">
                         <p class=\"article_link\">$url_encoded_link</p>
                         <h3 class=\"allow_overflow article_title\">$article_title</h3>
