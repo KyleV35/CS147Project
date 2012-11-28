@@ -76,6 +76,8 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
             data-role=\"button\" data-prefetch>Add News Source!</a>";
         echo "<a id=\"add_custom_source_button\" href=\"../views/add_custom_view.php?streamID=$streamID\"
             data-role=\"button\" data-prefetch>Add Custom Feed!</a>";
+        echo "<a id=\"done_button\" href=\"../views/stream_view.php?streamID=$streamID\"
+            data-role=\"button\" data-prefetch>Done Managing Feed!</a>";
         echo "</ul>";
         echo "</div>";
         

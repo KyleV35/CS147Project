@@ -20,7 +20,7 @@ class RSS_Feed {
     }
     
     private function read_rss() {
-        $url = $this->url;
+        $url = trim($this->url);
         try {
             $rss_feed = simplexml_load_file($url);
             $article_title_array = array();
