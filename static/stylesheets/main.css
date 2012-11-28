@@ -2,6 +2,10 @@
 http://westciv.com/tools/gradients/index-moz.html
 */
 
+p {
+   font-family: 'Pontano Sans', sans-serif;
+}
+
 .header {
     width: 100%;
     background: #21242C;
@@ -72,6 +76,10 @@ http://westciv.com/tools/gradients/index-moz.html
     color: #1122CC;
 }
 
+.title_size {
+    font-size: 25px;
+}
+
 .text_center {
     text-align:center;
 }
@@ -122,6 +130,11 @@ http://westciv.com/tools/gradients/index-moz.html
     display: none !important;
 }
 
+.description_text {
+    font-size: 20px;
+    line-height: 150%;
+}
+
 .description_background {
     -moz-border-radius: 15px;
     border-radius: 15px;
@@ -133,8 +146,13 @@ http://westciv.com/tools/gradients/index-moz.html
     padding-bottom: 3px;
     padding-top:3px;
     color: #009933;
+    font-size: 15px;
 }
 
 .hidden {
     display: none !important;
+}
+
+.pub_date {
+    font-size:15px;
 }

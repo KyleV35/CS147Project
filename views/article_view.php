@@ -35,16 +35,16 @@ $article_pub_date = $_SESSION["pub_date"];
         }
         ?>
         
-    <h1 class="article_title"><?=stripcslashes($article_title)?></h1>
+    <h1 class="article_title title_size"><?=stripcslashes($article_title)?></h1>
     <p class="article_site_large"><?=$article_source?></p>
     <p class="pub_date"><?=$article_pub_date?></p>
     <div class="description_background">
     <?php
         if ($article_description!=null) {
             $cleaned_description = stripcslashes($article_description);
-            echo "<p>Description:</p><br/><p>$cleaned_description</p>";
+            echo "<p class=\"description_text\">$cleaned_description</p>";
         } else {
-            echo "<p>Sorry, no description was available!</p>";
+            echo "<p class=\"description_text\">Sorry, no description was available!</p>";
         }
     ?>
     </div>
