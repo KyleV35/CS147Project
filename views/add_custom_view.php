@@ -6,7 +6,7 @@ $userID = require_login("mobile.php");
 $streamID = $_GET["streamID"];
 $stream = get_stream_for_streamID($streamID);
 $stream_name = $stream->get_stream_name();
-$title = "Add source!";
+$title = "Add Custom!";
 $extra_header = "<a href=\"../views/manage_stream.php?streamID=$streamID\" class=\"ui-btn-left\" data-prefetch>Cancel</a>";
     
 ?>
@@ -30,19 +30,16 @@ $extra_header = "<a href=\"../views/manage_stream.php?streamID=$streamID\" class
             unset($_SESSION["flash"]);
         }
         
-        echo "<ul data-role=\"listview\" data-filter=\"true\" data-filter-placeholder=\"Filter Sites...\" data-autodividers=\"true\">";
-        $site_array = get_all_sites();
-        foreach ($site_array as $site) {
-            $site_name = $site->get_site_name();
-            $siteID = $site->get_siteID();
-            echo "<li><a href=\"../views/select_rss_view.php?siteID=$siteID&streamID=$streamID\">$site_name</a></li>";
-        }
-                
-        echo "</ul>";
-        
         ?>
-        
-    </div><!-- /content -->
+    <form action="../controllers/add_custom_feed_to_stream.php" method="post">
+        <label>Enter the topic for your custom feed:</label>
+        <input type="text" name="search_filter" placeholder="Custom Feed Topic"/>
+        <input type="hidden" name="streamID" value="<?=$streamID?>"/>
+        <input type="submit" value="Create Custom Feed!"/>
+    </form>
+    
+    
+    </div> <!-- /Content -->
 </div><!-- /page -->
 
 </body>

@@ -52,15 +52,6 @@
 	<!-- /Create Stream Popup -->
         
 	</div><!-- /content -->
-        
-        <!--
-        <script>
-        $(document).ready(function() {
-            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
-        });
-        </script>
-        -->
-	
 </div><!-- /page -->
 
 </body>

@@ -54,7 +54,7 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefet
                 $url_encoded_title = urlencode($article_title);
                 echo 
                 "<li> 
-                    <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$url_encoded_title\" data-prefetch>
+                    <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$url_encoded_title\">
                         <div class=\"article_stub_div\">
                         <p class=\"article_link\">$url_encoded_link</p>
                         <h3 class=\"allow_overflow article_title\">$article_title</h3>
@@ -87,7 +87,6 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefet
     
     <script>
         $(document).ready(function() {
-            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
             $(".article_stub").click(function(event) {
                 var link = $(this).children(".article_stub_div").children(".article_link").text();
                 var description = $(this).children(".article_stub_div").children(".description").text();
