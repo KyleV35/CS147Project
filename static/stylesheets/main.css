@@ -2,6 +2,10 @@
 http://westciv.com/tools/gradients/index-moz.html
 */
 
+p {
+   font-family: 'Pontano Sans', sans-serif;
+}
+
 .header {
     width: 100%;
     background: #21242C;
@@ -17,22 +21,6 @@ http://westciv.com/tools/gradients/index-moz.html
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-.button {
-    border-radius: 15px;
-    background-color: #cccccc;
-    width: 200px;
-    height: 50px;
-    margin: auto;
-    margin-bottom: 10px;
-    -webkit-box-shadow: 8px 8px 5px #888;
-    box-shadow: 8px 8px 5px #888;
-}
-
-.button :hover {
-    background-color: #999999;
-    border-radius: 15px;
 }
 
 .button_text {
@@ -88,6 +76,10 @@ http://westciv.com/tools/gradients/index-moz.html
     color: #1122CC;
 }
 
+.title_size {
+    font-size: 25px;
+}
+
 .text_center {
     text-align:center;
 }
@@ -114,6 +106,10 @@ http://westciv.com/tools/gradients/index-moz.html
     -webkit-overflow-scrolling:touch;
 }
 
+.article_link {
+    display: none !important;
+}
+
 .article {
     height: 400px;
     width: 100%;
@@ -130,3 +126,33 @@ http://westciv.com/tools/gradients/index-moz.html
     color: green;
 }
 
+.description {
+    display: none !important;
+}
+
+.description_text {
+    font-size: 18px;
+    line-height: 150%;
+}
+
+.description_background {
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.article_site_large {
+    padding-bottom: 3px;
+    padding-top:3px;
+    color: #009933;
+    font-size: 15px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.pub_date {
+    font-size:15px;
+}

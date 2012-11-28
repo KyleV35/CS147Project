@@ -23,6 +23,7 @@
     <script>
     $(document).ready(function() {
         if (localStorage["userID"]!=null && localStorage["last_URL"]!=null) {
+            $("html").hide();
             $.post("../controllers/localSessionLogin.php",
             {
                 userID : localStorage["userID"]

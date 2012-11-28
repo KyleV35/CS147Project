@@ -1,5 +1,6 @@
 <?php
 
+
     include_once '../models/stream.php';
     include_once '../models/site.php';
     include_once '../models/rss_feed.php';
@@ -49,6 +50,7 @@
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/create_account.php");
+            exit();
         } else if (mysql_num_rows($result) >= 1) {
             return TRUE;
         } else {
@@ -63,6 +65,7 @@
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
+            exit();
         }
         $stream_array = array();
         while ($row = mysql_fetch_assoc($result)) {
@@ -78,6 +81,7 @@
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
+            exit();
         }
         $row = mysql_fetch_assoc($result);
         $stream = new Stream($row["streamName"], $row["userID"], $row["streamID"]);
@@ -85,11 +89,12 @@
     }
     
     function get_all_sites() {
-        $site_query = "Select * from Sites ORDER BY siteName;";
+        $site_query = "Select * from Sites where siteID<>1000 ORDER BY siteName;";
         $result = mysql_query($site_query);
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
+            exit();
         }
         $site_array = array();
         while ($row = mysql_fetch_assoc($result)) {
@@ -105,6 +110,7 @@
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
+            exit();
         }
         $row = mysql_fetch_assoc($result);
         $site = new Site($row["siteID"], $row["siteName"]);
@@ -128,6 +134,7 @@
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
+            exit();
         }
         $rss_array = array();
         while ($row = mysql_fetch_assoc($result)) {
@@ -153,6 +160,7 @@
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
+            exit();
         }
         $rss_array = array();
         while ($row = mysql_fetch_assoc($result)) {
@@ -186,6 +194,7 @@
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
+            exit();
         }
         $rss_array = array();
         while ($row = mysql_fetch_assoc($result)) {
@@ -210,6 +219,7 @@
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
+            exit();
         }
         $result_array = array();
         while ($row = mysql_fetch_assoc($result)) {
@@ -235,6 +245,7 @@
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
+            exit();
         }
     }
     
@@ -244,6 +255,7 @@
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
+            exit();
         }
     }
     
@@ -253,6 +265,71 @@
         if (!$result) {
             $_SESSION['flash'] = "There was an issue on our side!";
             header( "Location: ../views/error.php");
+            exit();
         }
+    }
+    
+    
+    function add_article_description_view($userID) {
+        $query = "Update Article_Description_Views set views=views+1 where userID=$userID;";
+        $result = mysql_query($query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+            exit();
+        }
+        echo $result;
+    }
+    
+    function add_article_link_view($userID) {
+        $query = "Update Article_Link_Views set views=views+1 where userID=$userID;";
+        $result = mysql_query($query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our side!";
+            header( "Location: ../views/error.php");
+            exit();
+        }
+        echo $result;
+    }
+    
+    function create_user($username, $password) {
+        $encrypted_password = crypt($password, $GLOBALS["salt"]);
+        $insert_query = "INSERT INTO User VALUES (NULL,\"$username\",\"$encrypted_password\");";
+        if (mysql_query($insert_query)) {
+            $userID = mysql_insert_id();
+            $analytics_query = "INSERT INTO Article_Description_Views VALUES (0,$userID);";
+            $result = mysql_query($analytics_query);
+            if (!$result) {
+                $_SESSION['flash'] = "Something went wrong on our end!  We'll work to fix it!";
+                header("Location: ../views/create_account.php");
+                exit();
+            }
+            $analytics_query2 = "INSERT INTO Article_Link_Views VALUES (0,$userID);";
+            $result2 = mysql_query($analytics_query2);
+            if (!$result2) {
+                $_SESSION['flash'] = "Something went wrong on our end!  We'll work to fix it!";
+                header("Location: ../views/create_account.php");
+                exit();
+            }
+            $_SESSION["userID"] = $userID;
+            header ("Location: ../views/home.php");
+            exit();
+        } else {
+            $_SESSION['flash'] = "Something went wrong on our end!  We'll work to fix it!";
+            header("Location: ../views/create_account.php");
+            exit();
+        }
+    }
+    
+    function insert_custom_rss_feed($rss_url,$filter,$streamID) {
+        $custom_id= 1000;
+        $query= "INSERT INTO RSS_Feeds VALUES (NULL,$custom_id,\"$filter\",\"$rss_url\");";
+        $result = mysql_query($query);
+        if (!$result) {
+            $_SESSION['flash'] = "There was an issue on our sideA!";
+            return false;
+        }
+        $rssID = mysql_insert_id();
+        return add_feed_to_stream($rssID, $streamID);
     }
 ?>

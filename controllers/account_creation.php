@@ -1,22 +1,5 @@
 <?php
     
-    /* Functions */
-    
-    function create_user($username, $password) {
-        $encrypted_password = crypt($password, $GLOBALS["salt"]);
-        $insert_query = "INSERT INTO User VALUES (NULL,\"$username\",\"$encrypted_password\");";
-        if (mysql_query($insert_query)) {
-            $userID = mysql_insert_id();
-            $_SESSION["userID"] = $userID;
-            header ("Location: ../views/home.php");
-            exit();
-        } else {
-            $_SESSION['flash'] = "Something went wrong on our end!  We'll work to fix it!";
-            header("Location: ../views/create_account.php");
-            exit();
-        }
-    }
-    
     /* Executed Code */
     session_start();
 

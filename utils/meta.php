@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="../static/stylesheets/delete.css?version=1">
 
 <link href='http://fonts.googleapis.com/css?family=Krona+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
 <!-- Mobile Shit -->
 <meta name="apple-mobile-web-app-capable" content="yes" />  
 <meta name="apple-mobile-web-app-status-bar-style" content="default" /> 

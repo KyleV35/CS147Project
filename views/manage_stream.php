@@ -72,7 +72,12 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
                 </li>";
             }
         }
-        echo "<a id=\"add_source_button\" href=\"../views/add_source_view.php?streamID=$streamID\" data-role=\"button\" data-prefetch>Add new source!</a>";
+        echo "<a id=\"add_source_button\" href=\"../views/add_source_view.php?streamID=$streamID\" 
+            data-role=\"button\" data-prefetch>Add News Source!</a>";
+        echo "<a id=\"add_custom_source_button\" href=\"../views/add_custom_view.php?streamID=$streamID\"
+            data-role=\"button\" data-prefetch>Add Custom Feed!</a>";
+        echo "<a id=\"done_button\" href=\"../views/stream_view.php?streamID=$streamID\"
+            data-role=\"button\" data-prefetch>Done Managing Feed!</a>";
         echo "</ul>";
         echo "</div>";
         
@@ -82,7 +87,6 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
     
     <script>
     $( document ).ready(function(){
-        saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>");
         $( ".feed_slider" ).bind( "change", function(event, ui) {
             var slider= $(this);
             var active_status = slider.val();
@@ -96,7 +100,7 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" class=\
             });
         });
     });
-</script>
+    </script>
 </div><!-- /page -->
 
 </body>

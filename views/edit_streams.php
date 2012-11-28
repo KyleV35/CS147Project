@@ -2,7 +2,7 @@
     include_once '../utils/config.php';
     session_start();
     $title = "Edit!";
-    $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\">Back</a>";
+    $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefetch>Back</a>";
     $userID = require_login("mobile.php");
 ?>
 <!DOCTYPE html>
@@ -27,14 +27,14 @@
         }
         
         /* Populate stream list with streams */
-        echo "<p class=\"info_text\">Select a stream to edit!</p>";
+        echo "<div class=\"info_box\"><p class=\"info_text\">Select a stream to edit!</p></div>";
         $stream_array = get_streams_for_userID($userID);
         echo "<div class=\"stream_list_container\">";
         echo "<ul data-role=\"listview\">";
         foreach ($stream_array as $stream) {
             $stream_name = $stream->get_stream_name();
             $streamID = $stream->get_streamID();
-            echo "<li><a href=\"../views/edit_options_stream.php?streamID=$streamID\">".$stream_name."</a></li>";
+            echo "<li><a href=\"../views/edit_options_stream.php?streamID=$streamID\" data-prefetch>".$stream_name."</a></li>";
         }
         echo "</ul>";
         echo "</div>";
@@ -52,13 +52,6 @@
 	<!-- /Create Stream Popup -->
         
 	</div><!-- /content -->
-        
-        <script>
-        $(document).ready(function() {
-            saveState(<?=$userID?>,"<?=$_SERVER["REQUEST_URI"]?>"); 
-        });
-        </script>
-	
 </div><!-- /page -->
 
 </body>

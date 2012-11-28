@@ -10,7 +10,9 @@ $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\"
     class=\"ui-btn-left\" data-prefetch>Back</a>";
 $article_title = $_GET["article_title"];
 $article_description = $_SESSION["description"];
-unset($_SESSION["description"]);
+$article_source = $_SESSION["source"];
+$article_link = urldecode($_SESSION["link"]);
+$article_pub_date = $_SESSION["pub_date"];
 ?>
 
 <!DOCTYPE html>
@@ -33,14 +35,36 @@ unset($_SESSION["description"]);
         }
         ?>
         
-    <h1 class="article_title text_center"><?=$article_title?></h1>
-    <p>Description:</p>
-    <p><?=$article_description?></p>
-    <a data-role="button" href="<?=$article_link?>">View this Article!</a>
+    <h1 class="article_title title_size"><?=stripcslashes($article_title)?></h1>
+    <p class="article_site_large"><?=$article_source?></p>
+    <p class="pub_date"><?=$article_pub_date?></p>
+    <div class="description_background">
+    <?php
+        if ($article_description!=null) {
+            $cleaned_description = stripcslashes($article_description);
+            echo "<p class=\"description_text\">$cleaned_description</p>";
+        } else {
+            echo "<p class=\"description_text\">Sorry, no description was available!</p>";
+        }
+    ?>
+    </div>
+    <a id="view_article_button" data-role="button" inline="true" href="<?=$article_link?>">View this Article!</a>
     
     
         
     </div><!-- /content -->
+    
+    <script>
+        $(document).ready(function() {
+           $("#view_article_button").click(function() {
+               $.post("../controllers/view_article_controller.php", {
+                   userID: <?=$userID?>
+               }, function() {
+                   
+               }) ;
+           });
+        });
+    </script>
     
 </div><!-- /page -->
 

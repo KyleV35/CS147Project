@@ -20,19 +20,24 @@ class RSS_Feed {
     }
     
     private function read_rss() {
-        $url = $this->url;
-        $rss_feed = simplexml_load_file($url);
-        $article_title_array = array();
+        $url = trim($this->url);
+        try {
+            $rss_feed = simplexml_load_file($url);
+            $article_title_array = array();
         
-        foreach ($rss_feed->channel->item as $article) {
-            $filtered_description = strip_tags($article->description);
-            $site_name = $this->get_site_name();
-            $filter = $this->filter;
-            $article = new Article($article->title, $article->link, $filtered_description, 
+            foreach ($rss_feed->channel->item as $article) {
+                $filtered_description = strip_tags($article->description);
+                $site_name = $this->get_site_name();
+                $filter = $this->filter;
+                $article = new Article($article->title, $article->link, $filtered_description, 
                     $site_name,$filter,$article->pubDate);
-            array_push($article_title_array, $article);
+                array_push($article_title_array, $article);
+            }
+            return $article_title_array;
+        } catch (Exception $e) {
+            echo "Error parsing RSS Feed for ".$this->get_site_name()."-".$this->filter;
+            return array();
         }
-        return $article_title_array;  
     }
     
     public function get_rssID() {
