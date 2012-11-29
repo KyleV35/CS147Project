@@ -8,6 +8,13 @@
     $link = mysql_connect('mysql-user-master.stanford.edu', 'ccs147kvermeer', 'booboo35');
     mysql_select_db('c_cs147_kvermeer');
     
+    function get_pdo() {
+        return new PDO(
+            'mysql:host=mysql-user-master.stanford.edu;dbname=c_cs147_kvermeer',
+            'ccs147kvermeer',
+            'booboo35');
+    }
+    
     function get_userID_from_username($username, $failure_page) {
         $query = "Select userID from User where username = \"$username\";";
         $result = mysql_query($query);
@@ -342,17 +349,54 @@
             $article_description = "NULL";
         }
         try {
-        $stmt = $pdo->prepare("INSERT INTO Favorites VALUES (:userID,:article_url,:pub_date,:article_title,:article_description)");
-        $stmt->bindParam(':userID', $userID);
-        $stmt->bindParam(':article_url', $article_url);
-        $stmt->bindParam(':pub_date', $pub_date);
-        $stmt->bindParam(':article_title', $article_title);
-        $stmt->bindParam(':article_description', $article_description);
-        $stmt->execute();
+            $stmt = $pdo->prepare("INSERT INTO Favorites VALUES (:userID,:article_url,:pub_date,:article_title,:article_description)");
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':article_url', $article_url);
+            $stmt->bindParam(':pub_date', $pub_date);
+            $stmt->bindParam(':article_title', $article_title);
+            $stmt->bindParam(':article_description', $article_description);
+            $stmt->execute();
         } catch (Exception $e) {
             echo" Uh-oh!";
             return false;
         }
         return true;
+    }
+    
+    function get_favorites($userID) {
+        $db = get_pdo();
+        try {
+            $stmt = $db->prepare("Select * From Favorites where userID = :userID");
+            $stmt->bindParam(':userID', $userID);
+            $stmt->execute();
+            $articles = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $article= new Article($row["article_title"], $row["article_url"], $row["description"], null, null, $row["pub_date"]);
+                array_push($articles,$article);
+            }
+            return $articles;
+            
+        } catch (Exception $e) {
+            return array();
+        } 
+    }
+    
+    function get_favorite_article_by_title($userID,$title) {
+        $db = get_pdo();
+        try {
+            $stmt = $db->prepare("Select * from Favorites where userID = :userID and article_title = :title");
+            $stmt->bindParam(':userID', $userID);
+            $stmt->bindParam(':title', $title);
+            $stmt->execute();
+            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $article= new Article($row["article_title"], $row["article_url"], $row["description"], null, null, $row["pub_date"]);
+                return $article;
+            } else {
+                return false;
+            }
+            
+        } catch (Exception $e) {
+            return false;
+        }
     }
 ?>

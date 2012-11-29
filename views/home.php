@@ -38,6 +38,7 @@
             $streamID = $stream->get_streamID();
             echo "<li><a href=\"../views/stream_view.php?streamID=$streamID\" data-prefetch>".$stream_name."</a></li>";
         }
+        echo "<li><a href=\"../views/favorites_view.php\" data-prefetch>Your Favorites!</a></li>";
         echo "<a id=\"create_feed_button\" href=\"#create_stream_popup\" data-rel=\"popup\" data-role=\"button\">Create New Feed!</a>";
         echo "</ul>";
         echo "</div>";

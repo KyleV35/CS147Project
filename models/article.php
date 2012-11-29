@@ -10,6 +10,7 @@ class Article {
     private $site_name;
     private $date;
     private $filter;
+    public $formatted_date;
     
     public function __construct($title,$link,$description,$site_name,$filter,$pub_date) {
         $this->title = $title;
@@ -17,7 +18,11 @@ class Article {
         $this->description = $description;
         $this->site_name = $site_name;
         $this->filter = $filter;
-        $this->date = $this->parse_pub_date($pub_date);
+        if ($site_name!= null) { // For Favorites
+            $this->date = $this->parse_pub_date($pub_date);
+        } else {
+            $this->formatted_date = $pub_date;
+        }
     }
     
     public function get_title() {
