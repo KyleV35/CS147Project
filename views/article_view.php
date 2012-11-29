@@ -48,7 +48,8 @@ $article_pub_date = $_SESSION["pub_date"];
         }
     ?>
     </div>
-    <a id="view_article_button" data-role="button" inline="true" href="<?=$article_link?>">View this Article!</a>
+    <a id="view_article_button" data-role="button" href="<?=$article_link?>">View this Article!</a>
+    <a id="favorite_button" data-role="button" href="#">Favorite This Article!</a>
     
     
         
@@ -59,9 +60,21 @@ $article_pub_date = $_SESSION["pub_date"];
            $("#view_article_button").click(function() {
                $.post("../controllers/view_article_controller.php", {
                    userID: <?=$userID?>
-               }, function() {
+               }, function(data) {
                    
                }) ;
+           });
+           $("#favorite_button").click(function() {
+              $.post("../controllers/add_favorite.php", {
+                        userID: <?=$userID?>,
+                        article_title: "<?=$article_title?>",
+                        article_source: "<?=urlencode($article_link)?>",
+                        pub_date: "<?=$article_pub_date?>",
+                        description: "<?=htmlspecialchars(stripcslashes($article_description))?>"
+                    }, function(data) {
+                        alert("You Have Favorited this article");
+                    }
+              );
            });
         });
     </script>

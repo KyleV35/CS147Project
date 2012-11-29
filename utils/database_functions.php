@@ -332,4 +332,27 @@
         $rssID = mysql_insert_id();
         return add_feed_to_stream($rssID, $streamID);
     }
+    
+    function add_favorite($userID,$article_title,$article_url,$pub_date,$article_description) {
+        $pdo = new PDO(
+            'mysql:host=mysql-user-master.stanford.edu;dbname=c_cs147_kvermeer',
+            'ccs147kvermeer',
+            'booboo35');
+        if (is_null($article_description)) {
+            $article_description = "NULL";
+        }
+        try {
+        $stmt = $pdo->prepare("INSERT INTO Favorites VALUES (:userID,:article_url,:pub_date,:article_title,:article_description)");
+        $stmt->bindParam(':userID', $userID);
+        $stmt->bindParam(':article_url', $article_url);
+        $stmt->bindParam(':pub_date', $pub_date);
+        $stmt->bindParam(':article_title', $article_title);
+        $stmt->bindParam(':article_description', $article_description);
+        $stmt->execute();
+        } catch (Exception $e) {
+            echo" Uh-oh!";
+            return false;
+        }
+        return true;
+    }
 ?>
