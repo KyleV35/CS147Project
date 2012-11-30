@@ -400,4 +400,21 @@
             return false;
         }
     }
+    
+    function remove_source_from_stream($rss_id, $stream_id) {
+        $db = get_pdo();
+        try {
+            $stmt = $db->prepare("DELETE FROM Has_Feed where streamID = :streamID and rssID = :rssID");
+            $stmt->bindParam(':streamID', $stream_id);
+            $stmt->bindParam(':rssID', $rss_id);
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+            
+        } catch (Exception $e) {
+            return false;
+        }
+    }
 ?>
