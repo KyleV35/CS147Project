@@ -53,7 +53,9 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefet
     
     <script>
         $(document).ready(function() {
-            
+            $(".delete_tooltip").click(function() {
+               alert("Clicked!"); 
+            });
         });
     </script>
 </div><!-- /page -->
