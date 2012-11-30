@@ -32,10 +32,11 @@ $extra_header = "<a href=\"../views/manage_stream.php?streamID=$streamID\" class
         
         ?>
     <form action="../controllers/add_custom_feed_to_stream.php" method="post">
-        <label>Enter the topic for your custom feed:</label>
+        <p class="custom_search_header">Want to have completely custom news?</p>
+        <p>Enter the topic for your custom feed below:</p>
         <input type="text" name="search_filter" placeholder="Custom Feed Topic"/>
         <input type="hidden" name="streamID" value="<?=$streamID?>"/>
-        <input type="submit" value="Create Custom Feed!"/>
+        <input type="submit" value="Create Custom Source!"/>
     </form>
     
     

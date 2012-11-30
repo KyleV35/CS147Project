@@ -99,7 +99,6 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefet
                     pub_date: pub_date,
                     userID:<?=$userID?>
                 }, function() {               
-                    $(this).click(function(event){});
                 });
             });
         });

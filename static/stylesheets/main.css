@@ -178,3 +178,9 @@ p {
     background-image:         linear-gradient( #e41119 /*{a-bup-background-start}*/, #bb0e14 /*{a-bup-background-end}*/);
     display: none !important;
 }
+
+.custom_search_header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
