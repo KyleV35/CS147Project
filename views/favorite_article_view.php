@@ -4,7 +4,8 @@ include_once '../utils/config.php';
 session_start();
 $userID = require_login("mobile.php");
 $article_title = $_GET["article_title"];
-$title = $article_title;
+$title = stripcslashes($article_title);
+echo $title;
 $extra_header = "<a href=\"../views/favorites_view.php\" 
     class=\"ui-btn-left\" data-prefetch>Back</a>";
 $article = get_favorite_article_by_title($userID, $title);

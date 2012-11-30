@@ -383,6 +383,7 @@
     
     function get_favorite_article_by_title($userID,$title) {
         $db = get_pdo();
+        $title = stripcslashes($title);
         try {
             $stmt = $db->prepare("Select * from Favorites where userID = :userID and article_title = :title");
             $stmt->bindParam(':userID', $userID);

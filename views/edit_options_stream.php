@@ -27,7 +27,11 @@
             unset($_SESSION["flash"]);
         }
         
+        echo "<p>Change the name of the stream:</p>";
         echo "<a href=\"#update_name_popup\" data-role=\"button\" data-rel=\"popup\">Update Name!</a>";
+        echo "<p>Manage the sources displayed for this feed:</p>";
+        echo "<a href=\"manage_stream.php?streamID=$streamID\" data-role=\"button\">Manage Sources</a>";
+        echo "<p>Delete this stream!</p>";
         echo "<a href=\"#delete_stream_popup\" data-theme=\"delete\" data-role=\"button\" data-rel=\"popup\">Delete Stream!</a>";
 	?>
 	    
