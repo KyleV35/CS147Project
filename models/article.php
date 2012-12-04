@@ -7,6 +7,7 @@ class Article {
     private $title;
     private $link;
     private $description;
+<<<<<<< HEAD
     private $site_name;
     private $date;
     private $filter;
@@ -23,6 +24,13 @@ class Article {
         } else {
             $this->formatted_date = $pub_date;
         }
+=======
+    
+    public function __construct($title,$link,$description) {
+        $this->title = $title;
+        $this->link = $link;
+        $this->description = $description;
+>>>>>>> parent of f9ebca2... Minor visual redesign
     }
     
     public function get_title() {
@@ -37,6 +45,7 @@ class Article {
         return $this->description;
     }
     
+<<<<<<< HEAD
     public function get_site_name() {
         return $this->site_name;
     }
@@ -58,6 +67,8 @@ class Article {
         $time_zone = $date_parts_array[5];
         return new Date($day, $month, $year, $time, $time_zone);
     }
+=======
+>>>>>>> parent of f9ebca2... Minor visual redesign
 }
 
     

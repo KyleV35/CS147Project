@@ -37,14 +37,19 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefet
         echo "<ul data-role=\"listview\" data-filter=\"true\" data-filter-placeholder=\"Filter Articles...\">";
         $all_articles_array = array();
         foreach ($rss_feed_array as $rss_feed) {
+<<<<<<< HEAD
             $all_articles_array = array_merge($all_articles_array,$rss_feed->get_article_list());
         }
         $sorted_articles = uasort($all_articles_array, 'compare_articles');
         foreach ($all_articles_array as $article) {
+=======
+            $article_array = $rss_feed->get_article_list();
+            foreach ($article_array as $article) {
+>>>>>>> parent of f9ebca2... Minor visual redesign
                 $article_title = $article->get_title();
                 $article_link = $article->get_link();
-                $article_site_name = $article->get_site_name();
                 $article_description = $article->get_description();
+<<<<<<< HEAD
                 $rss_filter = $article->get_filter();
                 $date = $article->get_date();
                 $year = $date->get_year();
@@ -69,10 +74,12 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefet
                  
      
                     "<a onclick=\"parent.location='$article_link'\">
+=======
+                echo "<li>
+                    <a href=\"$article_link\ data-role=\"button\">
+>>>>>>> parent of f9ebca2... Minor visual redesign
                         <div class=\"article_stub_div\">
-                        <h3 class=\"allow_overflow article_title\">$article_title</h3>
-                        <p class=\"allow_overflow article_site\">$article_site_name - 
-                            $rss_filter</p>
+                        <h3 class=\"allow_overflow\">$article_title</h3>
                         <p class=\"allow_overflow\">$article_description</p>
                         </div>
                     </a>
