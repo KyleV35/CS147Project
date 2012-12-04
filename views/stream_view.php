@@ -40,6 +40,7 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefet
 <<<<<<< HEAD
             $all_articles_array = array_merge($all_articles_array,$rss_feed->get_article_list());
         }
+<<<<<<< HEAD
         $sorted_articles = uasort($all_articles_array, 'compare_articles');
         foreach ($all_articles_array as $article) {
 =======
@@ -86,6 +87,38 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefet
                     </li>";
                    */ 
         }
+=======
+        if (empty($all_articles_array)) {
+            echo "<p class=\"no_article_info\">No Articles! Add some sources with the manage button in the top right corner!</p>";
+        } else {
+            $sorted_articles = uasort($all_articles_array, 'compare_articles');
+            foreach ($all_articles_array as $article) {
+                    $article_title = $article->get_title();
+                    $article_link = $article->get_link();
+                    $article_site_name = $article->get_site_name();
+                    $article_description = $article->get_description();
+                    $rss_filter = $article->get_filter();
+                    $date = $article->get_date();
+                    $year = $date->get_year();
+                    $month = $date->get_month();
+                    $day = $date->get_day();
+                    $url_encoded_link = urlencode($article_link);
+                    $url_encoded_title = urlencode($article_title);
+                    echo 
+                    "<li> 
+                        <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$url_encoded_title\">
+                            <div class=\"article_stub_div\">
+                            <p class=\"article_link\">$url_encoded_link</p>
+                            <h3 class=\"allow_overflow article_title\">$article_title</h3>
+                            <p class=\"allow_overflow article_site\">$article_site_name - $rss_filter</p>
+                            <p class=\"description allow_overflow\">$article_description</p>
+                            <p class=\"pub_date hidden allow_overflow\">$month $day, $year</p>
+                            </div>
+                        </a>
+                        </li>";
+            }
+         }
+>>>>>>> Remove-Sources
                 
         echo "</ul>";
         ?>

@@ -1,11 +1,5 @@
 <?php
     session_start();
-    /*
-    if ($_SESSION["userID"] != null) {
-        header('Location: home.php');
-        exit();
-    }
-     * */
     $title = "Whats up?";
 ?>
 

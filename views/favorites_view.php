@@ -28,22 +28,26 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefet
         
         echo "<ul data-role=\"listview\" data-filter=\"true\" data-filter-placeholder=\"Filter Articles...\">";
         $all_articles_array = get_favorites($userID);
-        foreach ($all_articles_array as $article) {
-                $article_title = $article->get_title();
-                $article_link = $article->get_link();
-                $url_encoded_link = urlencode($article_link);
-                $url_encoded_title = urlencode($article_title);
-                $date = $article->formatted_date;
-                echo 
-                "<li> 
-                    <a class=\"article_stub\" href=\"../views/favorite_article_view.php?article_title=$url_encoded_title\">
-                        <div class=\"article_stub_div\">
-                        <p class=\"article_link\">$url_encoded_link</p>
-                        <h3 class=\"allow_overflow article_title\">$article_title</h3>
-                        <p class=\"pub_date allow_overflow\">$date</p>
-                        </div>
-                    </a>
-                    </li>";
+        if (empty($all_articles_array)) {
+            echo "<p class=\"no_article_info\">You haven't favorited anything yet! Create a feed then start favoriting articles!</p>";
+        } else {
+            foreach ($all_articles_array as $article) {
+                    $article_title = $article->get_title();
+                    $article_link = $article->get_link();
+                    $url_encoded_link = urlencode($article_link);
+                    $url_encoded_title = urlencode($article_title);
+                    $date = $article->formatted_date;
+                    echo 
+                    "<li> 
+                        <a class=\"article_stub\" href=\"../views/favorite_article_view.php?article_title=$url_encoded_title\">
+                            <div class=\"article_stub_div\">
+                            <p class=\"article_link\">$url_encoded_link</p>
+                            <h3 class=\"allow_overflow article_title\">$article_title</h3>
+                            <p class=\"pub_date allow_overflow\">$date</p>
+                            </div>
+                        </a>
+                        </li>";
+            }
         }
                 
         echo "</ul>";

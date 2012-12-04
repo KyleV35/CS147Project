@@ -41,7 +41,7 @@ $article_pub_date = $_SESSION["pub_date"];
     <div class="description_background">
     <?php
         if ($article_description!=null) {
-            $cleaned_description = stripcslashes($article_description);
+            $cleaned_description = stripcslashes(htmlspecialchars($article_description));
             echo "<p class=\"description_text\">$cleaned_description</p>";
         } else {
             echo "<p class=\"description_text\">Sorry, no description was available!</p>";
@@ -70,7 +70,7 @@ $article_pub_date = $_SESSION["pub_date"];
                         article_title: "<?=$article_title?>",
                         article_source: "<?=urlencode($article_link)?>",
                         pub_date: "<?=$article_pub_date?>",
-                        description: "<?=htmlspecialchars(stripcslashes($article_description))?>"
+                        description: "<?=urlencode($article_description)?>"
                     }, function(data) {
                         alert("You Have Favorited this article");
                     }
