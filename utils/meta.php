@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default" /> 
 <meta http-equiv="pragma" content="no-cache"></meta>
 <meta name="google-site-verification" content="EkB9p-bhITYkbl_9pmpOOFIbf6wPZuApr-V8tT9vzEs" />
-<link href="../static/media/WhatsUpLoading2.gif" rel="apple-touch-startup-image" media="(device-height: 568px)">
+<link href="../static/media/WhatsUpLoading2.jpg" rel="apple-touch-startup-image" media="(device-height: 568px)">
 <link rel="apple-touch-startup-image" href="../static/media/WhatsUpLoading2Small.gif"/>
 <link rel="apple-touch-icon" href="../static/media/apple-touch-icon-iphone.png" />
 <meta name="viewport" content = "width = device-width, initial-scale = 1, maximum-scale=10" />  

@@ -22,7 +22,11 @@ class RSS_Feed {
     private function read_rss() {
         $url = trim($this->url);
         try {
-            $rss_feed = simplexml_load_file($url);
+            libxml_use_internal_errors();
+            $rss_feed = @simplexml_load_file($url,"SimpleXMLElement",LIBXML_NOWARNING);
+            if (is_null($rss_feed->channel)) {
+                throw new Exception();
+            }
             $article_title_array = array();
         
             foreach ($rss_feed->channel->item as $article) {
@@ -35,7 +39,7 @@ class RSS_Feed {
             }
             return $article_title_array;
         } catch (Exception $e) {
-            echo "Error parsing RSS Feed for ".$this->get_site_name()."-".$this->filter;
+            echo "<p class=\"red_text\">We had trouble getting data for the feed:  ".$this->get_site_name()."-".$this->filter."</p>";
             return array();
         }
     }

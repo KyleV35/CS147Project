@@ -3,7 +3,7 @@ include_once '../utils/config.php';
 session_start();
 $streamID = $_POST["streamID"];
 $search_filter = $_POST["search_filter"];
-$rss_url = "https://news.google.com/news/feeds?hl=en&q=".urlencode($search_filter);
+$rss_url = "https://news.google.com/news/feeds?hl=en&q=".urlencode($search_filter)."&output=rss";
 if (insert_custom_rss_feed($rss_url, $search_filter, $streamID)) {
     $_SESSION["info"]= "Feed successfully added to stream!";
 } else {
