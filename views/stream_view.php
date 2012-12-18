@@ -55,9 +55,12 @@ $extra_header = "<a href=\"../views/home.php\" class=\"ui-btn-left\" data-prefet
                     $day = $date->get_day();
                     $url_encoded_link = urlencode($article_link);
                     $url_encoded_title = urlencode($article_title);
+                    $url_encoded_description = urlencode($article_description);
+                    $source = urlencode($article_site_name.' - '.$rss_filter);
+                    $pub_date = urlencode($month.' '.$day.', '.$year);
                     echo 
                     "<li> 
-                        <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$url_encoded_title\">
+                        <a class=\"article_stub\" href=\"../views/article_view.php?streamID=$streamID&article_title=$url_encoded_title&description=$url_encoded_description&pub_date=$pub_date&link=$url_encoded_link&source=$source\">
                             <div class=\"article_stub_div\">
                             <p class=\"article_link\">$url_encoded_link</p>
                             <h3 class=\"allow_overflow article_title\">$article_title</h3>
