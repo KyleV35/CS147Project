@@ -4,15 +4,19 @@ include_once '../utils/config.php';
 session_start();
 $userID = require_login("mobile.php");
 $streamID = $_GET["streamID"];
-$article_link = $_GET["article_link"];
+//$article_link = $_GET["article_link"];
 $title = "Article";
 $extra_header = "<a href=\"../views/stream_view.php?streamID=$streamID\" 
     class=\"ui-btn-left\" data-prefetch>Back</a>";
 $article_title = $_GET["article_title"];
-$article_description = $_SESSION["description"];
-$article_source = $_SESSION["source"];
-$article_link = urldecode($_SESSION["link"]);
-$article_pub_date = $_SESSION["pub_date"];
+$article_description = urldecode($_GET["description"]);
+$article_link = urldecode($_GET["link"]);
+$article_source = urldecode($_GET["source"]);
+$article_pub_date = urldecode($_GET["pub_date"]);
+//$article_description = $_SESSION["description"];
+//$article_source = $_SESSION["source"];
+//$article_link = urldecode($_SESSION["link"]);
+//$article_pub_date = $_SESSION["pub_date"];
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +45,7 @@ $article_pub_date = $_SESSION["pub_date"];
     <div class="description_background">
     <?php
         if ($article_description!=null) {
-            $cleaned_description = stripcslashes(htmlspecialchars($article_description));
+            $cleaned_description = stripcslashes($article_description);
             echo "<p class=\"description_text\">$cleaned_description</p>";
         } else {
             echo "<p class=\"description_text\">Sorry, no description was available!</p>";
@@ -57,13 +61,14 @@ $article_pub_date = $_SESSION["pub_date"];
     
     <script>
         $(document).ready(function() {
-           $("#view_article_button").click(function() {
+           /*$("#view_article_button").click(function() {
                $.post("../controllers/view_article_controller.php", {
                    userID: <?=$userID?>
                }, function(data) {
                    
                }) ;
            });
+           */
            $("#favorite_button").click(function() {
               $.post("../controllers/add_favorite.php", {
                         userID: <?=$userID?>,
